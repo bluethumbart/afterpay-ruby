@@ -3,6 +3,11 @@ module Afterpay
     attr_accessor :app_id, :secret, :env,
                   :type, :maximum_amount, :minimum_amount, :description
 
+    def initialize
+      @app_id = nil
+      @secret = nil
+    end
+
     def auth_token
       Base64.strict_encode64("#{@app_id}:#{@secret}")
     end

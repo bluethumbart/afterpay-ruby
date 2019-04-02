@@ -1,5 +1,5 @@
 require_relative "afterpay/version"
-require_relative "afterpay/connection"
+require_relative "afterpay/client"
 require_relative "afterpay/config"
 require_relative "afterpay/consumer"
 require_relative "afterpay/item"

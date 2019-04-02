@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     afterpay-ruby (0.1.0)
-      faraday (~> 0.15.4)
+      faraday (>= 0.8, < 1.0)
       faraday_middleware (~> 0.13.1)
 
 GEM
