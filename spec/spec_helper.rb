@@ -1,5 +1,10 @@
 require "bundler/setup"
-require "afterpay/ruby"
+require "afterpay"
+require "webmock"
+require "money"
+include WebMock::API
+
+SANDBOX_URL = "https://api-sandbox.afterpay.com".freeze
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
