@@ -1,5 +1,5 @@
 # Bundler naming convention
-# This gem is called afterpay-ruby
-# thus bundler will require afterpay-ruby
+# This gem is called afterpay_ruby
+# thus bundler will require afterpay_ruby
 
 require "afterpay"
