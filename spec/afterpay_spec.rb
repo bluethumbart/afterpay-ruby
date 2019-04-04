@@ -9,6 +9,10 @@ CONFIGURATION = [{
 }]
 
 RSpec.describe Afterpay do
+  it "has version number" do
+    expect(Afterpay::VERSION).not_to be nil
+  end
+
   describe "#configure" do
     let(:uri) { "#{SANDBOX_URL}/v1/configuration" }
 

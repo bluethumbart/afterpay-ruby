@@ -1,19 +1,11 @@
 module Afterpay
   class Config
-    attr_accessor :app_id, :secret, :env,
+    attr_accessor :app_id, :secret, :env, :raise_errors,
                   :type, :maximum_amount, :minimum_amount, :description, :currency
 
     def initialize
-      @app_id = nil
-      @secret = nil
       @env = 'sandbox'
-    end
-
-    # Basic auth requires this format
-    # to be Base64 encoded
-    # "<app_id>:<secret>"
-    def auth_token
-      Base64.strict_encode64("#{@app_id}:#{@secret}")
+      @raise_errors = true
     end
 
     # Called only after app_id and secred is set

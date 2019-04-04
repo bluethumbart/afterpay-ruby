@@ -1,3 +1,5 @@
+require "ostruct"
+
 module Afterpay
   # The Order object for creating an order to `/v1/orders`
   class Order
@@ -8,6 +10,8 @@ module Afterpay
       new(*args).create
     end
 
+    attr_reader :attr
+
     # Initializes an Order object
     #
     # total :: a Money object
@@ -16,28 +20,24 @@ module Afterpay
     # success_url :: the path to rederect on successful payment
     # cancel_url :: the path to rederect on failed payment
     # payment_type :: Payment type set by Afterpay
-    def initialize(total:, items:, consumer:, success_url:, cancel_url:, payment_type: nil)
-      @total = total
-      @consumer = consumer
-      @items = items
-      @success_url = success_url
-      @cancel_url = cancel_url
-      @payment_type = payment_type
+    def initialize(attributes = {})
+      @attributes = OpenStruct.new(attributes)
+      @attributes.payment_type ||= Afterpay.config.type
     end
 
     def to_hash
       {
         totalAmount: {
-          amount: @total.to_f,
-          currency: @total.currency
+          amount: attributes.total.to_f,
+          currency: attributes.total.currency
         },
-        consumer: @consumer.to_hash,
-        items: @items.map(&:to_hash),
+        consumer: attributes.consumer.to_hash,
+        items: attributes.items.map(&:to_hash),
         merchant: {
-          redirectConfirmUrl: @success_url,
-          redirectCancelUrl: @cancel_url
+          redirectConfirmUrl: attributes.success_url,
+          redirectCancelUrl: attributes.cancel_url
         },
-        paymentType: @payment_type || Afterpay.config.type
+        paymentType: attributes.payment_type
       }
     end
 
