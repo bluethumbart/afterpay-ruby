@@ -1,13 +1,21 @@
 module Afterpay
+  # The Order object for creating an order to `/v1/orders`
   class Order
+    # Helper function to create an Order and calls #create
+    #
+    # returns Order::Response containing token, error, valid?
     def self.create(*args)
-      body = Afterpay.client.post("/v1/orders") do |req|
-        req.body = new(*args).to_hash
-      end.body
-
-      Response.new(body)
+      new(*args).create
     end
 
+    # Initializes an Order object
+    #
+    # total :: a Money object
+    # items :: receives multiple [Afterpay::Items]
+    # consumer :: receives Afterpay::Consumer
+    # success_url :: the path to rederect on successful payment
+    # cancel_url :: the path to rederect on failed payment
+    # payment_type :: Payment type set by Afterpay
     def initialize(total:, items:, consumer:, success_url:, cancel_url:, payment_type: nil)
       @total = total
       @consumer = consumer
@@ -31,6 +39,15 @@ module Afterpay
         },
         paymentType: @payment_type || Afterpay.config.type
       }
+    end
+
+    # Sends the create request to Afterpay server
+    def create
+      body = Afterpay.client.post("/v1/orders") do |req|
+        req.body = to_hash
+      end.body
+
+      Response.new(body)
     end
 
     class Response

@@ -10,10 +10,19 @@ module Afterpay
     attr_accessor :config
   end
 
+  # Helper function for Afterpay::Client
+  # Use Afterpay.client to send receive request
   def self.client
     Client.new
   end
 
+  # Configure block to setup configuration
+  #
+  #  Afterpay.configure do |conf|
+  #    conf.app_id = <app_id>
+  #    conf.secret = <secret>
+  #  end
+  #
   def self.configure
     self.config ||= Config.new
     yield(config) if block_given?
