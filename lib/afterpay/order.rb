@@ -10,7 +10,7 @@ module Afterpay
       new(*args).create
     end
 
-    attr_reader :attr
+    attr_reader :attributes
 
     # Initializes an Order object
     #
