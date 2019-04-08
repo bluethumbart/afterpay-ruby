@@ -6,7 +6,7 @@ RSpec.describe Afterpay::Consumer do
       email: "johndoe@mail.com",
       phone: 12345678910,
       first_name: "FName",
-      last_name: "LName",
+      last_name: "LName"
     )
   end
 

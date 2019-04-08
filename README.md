@@ -1,8 +1,6 @@
-# Afterpay::Ruby
+# Afterpay Ruby
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/afterpay/ruby`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Afterpay Ruby is a Ruby wrapper for Afterpay API. It provides simple DSL and serialization to Afterpay's API attribute.
 
 ## Installation
 

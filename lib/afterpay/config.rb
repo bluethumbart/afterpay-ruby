@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
 module Afterpay
   class Config
     attr_accessor :app_id, :secret, :env, :raise_errors,
-                  :type, :maximum_amount, :minimum_amount, :description, :currency
+                  :type, :maximum_amount, :minimum_amount,
+                  :description, :currency
 
     def initialize
-      @env = 'sandbox'
+      @env = "sandbox"
       @raise_errors = true
     end
 

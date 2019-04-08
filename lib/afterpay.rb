@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
+require "money"
 require_relative "afterpay/version"
 require_relative "afterpay/client"
 require_relative "afterpay/config"
 require_relative "afterpay/consumer"
 require_relative "afterpay/item"
 require_relative "afterpay/order"
+require_relative "afterpay/payment"
 
 module Afterpay
   class << self
@@ -26,7 +30,8 @@ module Afterpay
   def self.configure
     self.config ||= Config.new
     yield(config) if block_given?
-    config.fetch_remote_config.freeze
+    config.fetch_remote_config
+    config.freeze
   end
 
   def self.env
