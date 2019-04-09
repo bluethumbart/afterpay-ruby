@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api-sandbox.afterpay.com/v1/orders/tgiibd59adl9rldhefaqm9jcgnhca8dvv07t9gcq7lboo6btsdfq
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic <AUTH TOKEN>
+      User-Agent:
+      - Faraday v0.15.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 09 Apr 2019 06:47:13 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '384'
+      connection:
+      - close
+      set-cookie:
+      - __cfduid=d7478fd9012bdbf218cc8295382353b331554792433; expires=Wed, 08-Apr-20
+        06:47:13 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      cache-control:
+      - private, no-cache, no-store, no-transform, must-revalidate, max-age=0
+      http_correlation_id:
+      - 7iptmxcfhgts3ex4tgzypxdchy
+      vary:
+      - Accept-Encoding
+      accept-ranges:
+      - bytes
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      expect-ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      server:
+      - cloudflare
+      cf-ray:
+      - 4c4a874718c27038-SIN
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "expires" : "2019-04-09T06:55:39.101Z",
+          "token" : "tgiibd59adl9rldhefaqm9jcgnhca8dvv07t9gcq7lboo6btsdfq",
+          "totalAmount" : {
+            "amount" : "1000.00",
+            "currency" : "AUD"
+          },
+          "consumer" : {
+            "phoneNumber" : "12345678910",
+            "givenNames" : "FName",
+            "surname" : "LName",
+            "email" : "johndoe@mail.com"
+          },
+          "courier" : { },
+          "merchant" : {
+            "redirectConfirmUrl" : "http://example.com/success",
+            "redirectCancelUrl" : "http://example.com/cancel"
+          },
+          "paymentType" : "PAY_BY_INSTALLMENT",
+          "items" : [ {
+            "name" : "Item Name",
+            "sku" : "1",
+            "quantity" : 1,
+            "price" : {
+              "amount" : "1000.00",
+              "currency" : "AUD"
+            }
+          } ],
+          "discounts" : [ ]
+        }
+    http_version: 
+  recorded_at: Tue, 09 Apr 2019 06:47:13 GMT
+recorded_with: VCR 4.0.0

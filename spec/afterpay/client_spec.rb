@@ -15,5 +15,10 @@ RSpec.describe Afterpay::Client do
       Afterpay.config.env = "live"
       expect(Afterpay::Client.server_url).to match(/api.afterpay/)
     end
+
+    # Resets env to sandbox once this test is done
+    after(:all) do
+      Afterpay.config.env = "sandbox"
+    end
   end
 end

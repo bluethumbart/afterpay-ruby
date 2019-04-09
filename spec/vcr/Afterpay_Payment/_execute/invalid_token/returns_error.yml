@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.afterpay.com/v1/payments/capture
+    body:
+      encoding: UTF-8
+      string: '{"token":"tgiibd59adl9rldhefaqm9jcgnhca8dvv07t9gcq7lboo6btsdfq","merchantRefernce":"checkout-1"}'
+    headers:
+      Authorization:
+      - Basic <AUTH TOKEN>
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 412
+      message: Precondition Failed
+    headers:
+      date:
+      - Tue, 09 Apr 2019 07:00:02 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '126'
+      connection:
+      - close
+      set-cookie:
+      - __cfduid=d808143018f225ea5eadb5d33adf1976d1554793202; expires=Wed, 08-Apr-20
+        07:00:02 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      http_correlation_id:
+      - nq4w72ad3cqjwrk3y7rgoszo44
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      expect-ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      server:
+      - cloudflare
+      cf-ray:
+      - 4c4a9a0c6bc4704a-SIN
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errorCode" : "invalid_token",
+          "errorId" : "293f3acfc12eb34c",
+          "message" : "Invalid token",
+          "httpStatusCode" : 412
+        }
+    http_version: 
+  recorded_at: Tue, 09 Apr 2019 07:00:03 GMT
+recorded_with: VCR 4.0.0

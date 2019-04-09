@@ -43,10 +43,9 @@ module Afterpay
         Faraday.new(url: self.class.server_url) do |conn|
           conn.use ErrorMiddleware if Afterpay.config.raise_errors
           conn.authorization "Basic", self.class.auth_token
-          conn.response :logger
 
           conn.request :json
-          conn.response :json, content_type: "application/json"
+          conn.response :json, content_type: "application/json", parser_options: { symbolize_names: true }
           conn.adapter Faraday.default_adapter
         end
     end
@@ -65,8 +64,6 @@ module Afterpay
           raise Client::NotFoundError, env.dig(:body, "message")
         when 401
           raise Client::UnauthorizedError, env.dig(:body, "message")
-        when 412
-          raise Client::InvalidTokenError, env.dig(:body, "message")
         end
       end
     end

@@ -27,14 +27,13 @@ module Afterpay
 
     # Builds Item from response
     def self.from_response(response)
+      return nil if response.nil?
+
       new(
-        name: response["name"],
-        sku: response["sku"],
-        quantity: response["quantity"],
-        price: Money.new(
-          response.dig("price", "amount").to_f,
-          response.dig("price", "currency")
-        )
+        name: response[:name],
+        sku: response[:sku],
+        quantity: response[:quantity],
+        price: MoneyUtil.from_response(response[:price])
       )
     end
   end

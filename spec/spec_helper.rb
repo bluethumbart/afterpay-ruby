@@ -1,12 +1,30 @@
+require "simplecov"
+require "vcr"
+require "dotenv"
+
+SimpleCov.start do
+  add_filter "/spec/"
+end
+
+Dotenv.load
+
+VCR.configure do |config|
+  config.hook_into :faraday
+  config.cassette_library_dir = "spec/vcr"
+
+  config.allow_http_connections_when_no_cassette = true
+  config.configure_rspec_metadata!
+  config.filter_sensitive_data("<AUTH TOKEN>") { ENV["AUTH_TOKEN"] }
+end
+
 require "bundler/setup"
+require "pry"
 require "afterpay"
-require "webmock"
-require "money"
-SANDBOX_URL = "https://api-sandbox.afterpay.com".freeze
+
+# Enables sandbox with SANDBOX=true to test sandbox and record VCR
+require "./configure" if ENV["SANDBOX"]
 
 RSpec.configure do |config|
-  include WebMock::API
-
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
 

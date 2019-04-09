@@ -22,11 +22,13 @@ module Afterpay
 
     # Builds Consumer from response
     def self.from_response(response)
+      return nil if response.nil?
+
       new(
-        email: response["email"],
-        first_name: response["givenNames"],
-        last_name: response["surname"],
-        phone: response["phoneNumber"]
+        email: response[:email],
+        first_name: response[:givenNames],
+        last_name: response[:surname],
+        phone: response[:phoneNumber]
       )
     end
   end

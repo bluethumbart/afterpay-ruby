@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api-sandbox.afterpay.com/v1/configuration
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Basic <AUTH TOKEN>
+      User-Agent:
+      - Faraday v0.15.4
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Tue, 09 Apr 2019 06:14:58 GMT
+      content-type:
+      - application/json
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      set-cookie:
+      - __cfduid=d2cfd2dc1c03c9af90ce7bdf1772492e71554790497; expires=Wed, 08-Apr-20
+        06:14:57 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      cache-control:
+      - private, no-transform, max-age=1800
+      http_correlation_id:
+      - fxizmlfobmrw3qrvnsxz3ydlyq
+      vary:
+      - Accept-Encoding
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      expect-ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      server:
+      - cloudflare
+      cf-ray:
+      - 4c4a5802b86bc324-SIN
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "type" : "PAY_BY_INSTALLMENT",
+          "description" : "Pay over time",
+          "maximumAmount" : {
+            "amount" : "1000.00",
+            "currency" : "AUD"
+          }
+        } ]
+    http_version: 
+  recorded_at: Tue, 09 Apr 2019 06:14:58 GMT
+recorded_with: VCR 4.0.0

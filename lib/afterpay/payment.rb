@@ -19,17 +19,16 @@ module Afterpay
       new(request.body)
     end
 
-    attr_accessor :id, :status, :created, :total, :order
+    attr_accessor :id, :status, :created, :total, :order, :error
 
+    # Initialize Payment from response
     def initialize(attributes)
-      @id = attributes["id"]
-      @status = attributes["status"]
-      @created = attributes["created"]
-      @total = Money.from_amount(
-        attributes["amount"].to_f,
-        attributes["currency"]
-      )
-      @order = Order.from_response(attributes["orderDetails"])
+      @id = attributes[:id]
+      @status = attributes[:status]
+      @created = attributes[:created]
+      @total = MoneyUtil.from_response(attributes[:total])
+      @order = Order.from_response(attributes[:orderDetails])
+      @error = Error.new(attributes) if attributes[:errorId]
     end
 
     def success?

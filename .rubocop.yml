@@ -1,6 +1,7 @@
 AllCops:
   Exclude:
     - "afterpay-ruby.gemspec"
+    - "bin/*"
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
@@ -12,7 +13,6 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: always
   Exclude:
     - "spec/**/*"
-    - "bin/*"
     - "Gemfile"
     - "Rakefile"
 

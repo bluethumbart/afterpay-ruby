@@ -8,6 +8,8 @@ require_relative "afterpay/consumer"
 require_relative "afterpay/item"
 require_relative "afterpay/order"
 require_relative "afterpay/payment"
+require_relative "afterpay/error"
+require_relative "afterpay/money_util"
 
 module Afterpay
   class << self
@@ -31,7 +33,7 @@ module Afterpay
     self.config ||= Config.new
     yield(config) if block_given?
     config.fetch_remote_config
-    config.freeze
+    config.freeze if config.env == "live"
   end
 
   def self.env

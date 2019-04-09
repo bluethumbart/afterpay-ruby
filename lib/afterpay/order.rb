@@ -2,7 +2,6 @@
 
 require "ostruct"
 require "forwardable"
-require_relative "money_utils"
 
 module Afterpay
   # The Order object for creating an order to `/v1/orders`
@@ -18,33 +17,31 @@ module Afterpay
                    :discounts,
                    :billing,
                    :shipping,
-                   :merchant_reference
+                   :merchant_reference,
+                   # Finds Order from Afterpay API
+                   # @param token [String]
+                   # @return [Order]
+                   def self.find(token)
+                     request = Afterpay.client.get("/v1/orders/#{token}")
 
-    # Finds Order from Afterpay API
-    # @param token [String]
-    # @return [Order]
-    def self.find(token)
-      request = Afterpay.client.get("/v1/orders/#{token}")
-
-      Order.from_response(request.body)
-    end
+                     Order.from_response(request.body)
+                   end
 
     # Builds Order from response
-    # @params response [Hash] response params from API
+    # @param response [Hash] response params from API
     # @return [Order]
     def self.from_response(response)
+      return nil if response.nil?
+
       new(
-        total: Money.from_amount(
-          response.dig("total", "amount").to_f,
-          response.dig("total", "currency")
-        ),
-        consumer: Consumer.from_response(response["consumer"]),
-        items: response["items"].map { |item| Item.from_response(item) },
-        # billing: response["billing"],
-        # shipping: response["shipping"],
-        # discounts: Discount.from_response(response["discounts"]),
-        tax: MoneyUtils.from_response(response["taxAmount"]),
-        shipping: MoneyUtils.from_response(response["shippingAmount"])
+        total: MoneyUtil.from_response(response[:total]),
+        consumer: Consumer.from_response(response[:consumer]),
+        items: response[:items].map { |item| Item.from_response(item) },
+        # billing: response[:billing],
+        # shipping: response[:shipping],
+        # discounts: Discount.from_response(response[:discounts]),
+        tax: MoneyUtil.from_response(response[:taxAmount]),
+        shipping: MoneyUtil.from_response(response[:shippingAmount])
       )
     end
 
@@ -57,6 +54,7 @@ module Afterpay
     end
 
     attr_reader :attributes
+    attr_accessor :token
 
     # Initializes an Order object
     #
@@ -70,6 +68,7 @@ module Afterpay
     def initialize(attributes = {})
       @attributes = OpenStruct.new(attributes)
       @attributes.payment_type ||= Afterpay.config.type
+      @token = @attributes.token || nil
     end
 
     # Builds structure to API specs
@@ -77,7 +76,7 @@ module Afterpay
       {
         totalAmount: {
           amount: total.to_f,
-          currency: total.currency
+          currency: total.currency.iso_code
         },
         consumer: consumer.to_hash,
         items: items.map(&:to_hash),
@@ -99,32 +98,24 @@ module Afterpay
         req.body = to_hash
       end
 
-      Response.new(request.body)
+      Response.new(request.body, self)
     end
 
     # The response object returned after create
     class Response
-      attr_accessor :token, :expiry, :error
+      attr_accessor :token, :expiry, :error, :order
 
-      def initialize(response)
-        @token = response["token"]
-        @expiry = Time.zone.parse(response["expires"]) if response["expires"]
-        @error = Error.new(response) if response["errorCode"]
+      def initialize(response, order)
+        @order = order
+        @token = response[:token]
+        @expiry = Time.parse(response[:expires]) if response[:expires]
+        @error = Error.new(response) if response[:errorCode]
+
+        @order.token = @token
       end
 
       def success?
         error.nil?
-      end
-
-      # Error class with accessor to methods
-      class Error
-        attr_accessor :code, :id, :message
-
-        def initialize(response)
-          @id = response["errorId"]
-          @code = response["errorCode"]
-          @message = response["message"]
-        end
       end
     end
   end

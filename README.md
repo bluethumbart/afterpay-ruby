@@ -1,5 +1,7 @@
 # Afterpay Ruby
 
+Based on the [API docs](https://docs.afterpay.com/au-online-api-v1.html)
+
 Afterpay Ruby is a Ruby wrapper for Afterpay API. It provides simple DSL and serialization to Afterpay's API attribute.
 
 ## Installation
@@ -20,7 +22,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You need to configure Afterpay using your Merchant ID and secret.
+
+```ruby
+Afterpay.configure do |config|
+  config.app_id = <app_id>
+  config.secret = <secret>
+
+  # Sets to raise errors on request
+  # config.raise_errors = true
+
+  # Sets the environment for Afterpay
+  # defaults to sandbox
+  # config.env = "sandbox" # "live"
+end
+```
+
+### Creating an Order
+
+
 
 ## Development
 

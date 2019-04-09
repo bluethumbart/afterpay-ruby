@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.afterpay.com/v1/orders
+    body:
+      encoding: UTF-8
+      string: '{"totalAmount":{"amount":1000.0,"currency":"AUD"},"consumer":{"phoneNumber":12345678910,"givenNames":"FName","surname":"LName","email":"johndoe@mail.com"},"items":[{"name":"Item
+        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"http://example.com/success","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":null,"paymentType":null}'
+    headers:
+      Authorization:
+      - Basic <AUTH TOKEN>
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      date:
+      - Tue, 09 Apr 2019 06:25:39 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '112'
+      connection:
+      - close
+      set-cookie:
+      - __cfduid=d5c0f001e943ff05610fd279cc5a10c3b1554791138; expires=Wed, 08-Apr-20
+        06:25:38 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      http_correlation_id:
+      - 6ppgavzh3flnbypn2vgmenhbfe
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      expect-ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      server:
+      - cloudflare
+      cf-ray:
+      - 4c4a67aaba9f70d4-SIN
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "token" : "tgiibd59adl9rldhefaqm9jcgnhca8dvv07t9gcq7lboo6btsdfq",
+          "expires" : "2019-04-09T06:55:39.101Z"
+        }
+    http_version: 
+  recorded_at: Tue, 09 Apr 2019 06:25:39 GMT
+recorded_with: VCR 4.0.0

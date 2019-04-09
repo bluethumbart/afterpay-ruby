@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.afterpay.com/v1/orders
+    body:
+      encoding: UTF-8
+      string: '{"totalAmount":{"amount":1000.0,"currency":"AUD"},"consumer":{"phoneNumber":12345678910,"givenNames":"FName","surname":"LName","email":"johndoe@mail.com"},"items":[{"name":"Item
+        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":null,"paymentType":null}'
+    headers:
+      Authorization:
+      - Basic <AUTH TOKEN>
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 422
+      message: ''
+    headers:
+      date:
+      - Tue, 09 Apr 2019 06:45:24 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '207'
+      connection:
+      - close
+      set-cookie:
+      - __cfduid=dfee5852ce514765e1661c227414ee3f51554792323; expires=Wed, 08-Apr-20
+        06:45:23 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      http_correlation_id:
+      - g4ppi3mroaqiagvsq7azo5vo4y
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      expect-ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      server:
+      - cloudflare
+      cf-ray:
+      - 4c4a8498ff0ec3a6-SIN
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errorCode" : "invalid_object",
+          "errorId" : "48da0bce49d39625",
+          "message" : "merchant.redirectConfirmUrl must be a valid URL, merchant.redirectConfirmUrl may not be empty",
+          "httpStatusCode" : 422
+        }
+    http_version: 
+  recorded_at: Tue, 09 Apr 2019 06:45:24 GMT
+recorded_with: VCR 4.0.0
