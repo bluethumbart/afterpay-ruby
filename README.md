@@ -24,13 +24,12 @@ Or install it yourself as:
 
 You need to configure Afterpay using your Merchant ID and secret.
 
+For Rails, put this in your initializer.
+
 ```ruby
 Afterpay.configure do |config|
   config.app_id = <app_id>
   config.secret = <secret>
-
-  # Sets to raise errors on request
-  # config.raise_errors = true
 
   # Sets the environment for Afterpay
   # defaults to sandbox
@@ -38,9 +37,57 @@ Afterpay.configure do |config|
 end
 ```
 
-### Creating an Order
+### Creating an Order - [api docs](https://docs.afterpay.com/au-online-api-v1.html#create-order)
+
+```ruby
+order = Afterpay::Order.create(
+  total: <Money>,
+  consumer: <Afterpay::Consumer>,
+  items: [<Afterpay::Item>],
+  success_url: <String>,
+  cancel_url: <String>
+)
+
+# OR
+
+order = Afterpay::Order.new(
+  ...
+)
+order.create
 
 
+order.success?
+=> true
+order.token
+=> xxxxxxx
+
+# Error
+
+order.success?
+=> false
+order.error
+=> Afterpay::Error:0x00007f8a63953888
+  @id="48da0bce49d39625",
+  @code="invalid_object",
+  @message="merchant.redirectConfirmUrl must be a valid URL, merchant.redirectConfirmUrl may not be empty" >
+```
+
+### Executing Payment
+
+```ruby
+payment = Afterpay::Payment.execute(
+  token: token <String>,
+  reference: "checkout-1" <String>
+)
+=> <Afterpay::Payment ...>
+
+payment.success?
+=> true
+payment.order
+=> <Afterpay::Order ...>
+payment.status
+=> APPROVED
+```
 
 ## Development
 

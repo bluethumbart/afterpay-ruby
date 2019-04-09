@@ -1,0 +1,78 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.afterpay.com/v1/payments/capture
+    body:
+      encoding: UTF-8
+      string: '{"token":"q3f6gn81q09gfjk7riaqfhavmtebt88qpjepd9kmjo37ou7oj5eb","merchantRefernce":"checkout-1"}'
+    headers:
+      Authorization:
+      - Basic <AUTH TOKEN>
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      date:
+      - Tue, 09 Apr 2019 08:46:32 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '672'
+      connection:
+      - close
+      set-cookie:
+      - __cfduid=d80c7ac4a811538e51a1195051a81527c1554799592; expires=Wed, 08-Apr-20
+        08:46:32 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      http_correlation_id:
+      - 5ey7as6smo3rfw7lxldatndjfe
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      expect-ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      server:
+      - cloudflare
+      cf-ray:
+      - 4c4b360c59aecbda-SIN
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id" : "24266772",
+          "token" : "q3f6gn81q09gfjk7riaqfhavmtebt88qpjepd9kmjo37ou7oj5eb",
+          "status" : "APPROVED",
+          "created" : "2019-04-09T08:38:30.159Z",
+          "totalAmount" : {
+            "amount" : "1000.00",
+            "currency" : "AUD"
+          },
+          "refunds" : [ ],
+          "orderDetails" : {
+            "consumer" : {
+              "phoneNumber" : "12345678910",
+              "givenNames" : "FName",
+              "surname" : "LName",
+              "email" : "johndoe@mail.com"
+            },
+            "courier" : { },
+            "items" : [ {
+              "name" : "Item Name",
+              "sku" : "1",
+              "quantity" : 1,
+              "price" : {
+                "amount" : "1000.00",
+                "currency" : "AUD"
+              }
+            } ],
+            "discounts" : [ ]
+          },
+          "events" : [ ]
+        }
+    http_version: 
+  recorded_at: Tue, 09 Apr 2019 08:46:32 GMT
+recorded_with: VCR 4.0.0

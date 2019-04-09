@@ -29,19 +29,19 @@ RSpec.describe Afterpay::Order do
   end
 
   describe "#create" do
-    it "returns a response", :vcr do
-      response = order.create
+    it "returns a valid Order", :vcr do
+      order.create
 
-      expect(response.success?).to be true
-      expect(response.token).to eq(order.token)
+      expect(order.success?).to be true
+      expect(order.token).to eq(order.token)
     end
 
     it "creates with error", :vcr do
       order.attributes.success_url = ""
-      response = order.create
+      order.create
 
-      expect(response.success?).to be false
-      expect(response.error).not_to be_nil
+      expect(order.success?).to be false
+      expect(order.error).not_to be_nil
     end
   end
 

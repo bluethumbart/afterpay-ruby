@@ -17,15 +17,16 @@ module Afterpay
                    :discounts,
                    :billing,
                    :shipping,
-                   :merchant_reference,
-                   # Finds Order from Afterpay API
-                   # @param token [String]
-                   # @return [Order]
-                   def self.find(token)
-                     request = Afterpay.client.get("/v1/orders/#{token}")
+                   :merchant_reference
 
-                     Order.from_response(request.body)
-                   end
+  # Finds Order from Afterpay API
+  # @param token [String]
+  # @return [Order]
+  def self.find(token)
+    request = Afterpay.client.get("/v1/orders/#{token}")
+
+    Order.from_response(request.body)
+  end
 
     # Builds Order from response
     # @param response [Hash] response params from API
@@ -53,8 +54,7 @@ module Afterpay
       new(*args).create
     end
 
-    attr_reader :attributes
-    attr_accessor :token
+    attr_reader :attributes, :expiry, :token, :error
 
     # Initializes an Order object
     #
@@ -69,6 +69,8 @@ module Afterpay
       @attributes = OpenStruct.new(attributes)
       @attributes.payment_type ||= Afterpay.config.type
       @token = @attributes.token || nil
+      @expiry = nil
+      @error = nil
     end
 
     # Builds structure to API specs
@@ -97,26 +99,18 @@ module Afterpay
       request = Afterpay.client.post("/v1/orders") do |req|
         req.body = to_hash
       end
+      response = request.body
 
-      Response.new(request.body, self)
+      if request.success?
+        @expiry = Time.parse(response[:expires])
+        @token = response[:token]
+      else
+        @error = Error.new(response)
+      end
     end
 
-    # The response object returned after create
-    class Response
-      attr_accessor :token, :expiry, :error, :order
-
-      def initialize(response, order)
-        @order = order
-        @token = response[:token]
-        @expiry = Time.parse(response[:expires]) if response[:expires]
-        @error = Error.new(response) if response[:errorCode]
-
-        @order.token = @token
-      end
-
-      def success?
-        error.nil?
-      end
+    def success?
+      !@token.nil?
     end
   end
 end
