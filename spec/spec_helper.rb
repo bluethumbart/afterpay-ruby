@@ -1,10 +1,14 @@
-require "simplecov"
 require "vcr"
 require "dotenv"
 
-SimpleCov.start do
-  add_filter "/spec/"
-end
+require 'coveralls'
+Coveralls.wear!
+
+# require "simplecov"
+#
+# SimpleCov.start do
+#   add_filter "/spec/"
+# end
 
 Dotenv.load
 

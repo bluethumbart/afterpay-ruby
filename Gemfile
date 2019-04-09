@@ -7,4 +7,5 @@ group :test do
   gem "simplecov", require: false
   gem "vcr", "~> 4.0"
   gem "webmock", "~> 3.5", ">= 3.5.1"
+  gem 'coveralls', require: false
 end
