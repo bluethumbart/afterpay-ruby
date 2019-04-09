@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bluethumbart/afterpay-ruby.svg?branch=master)](https://travis-ci.org/bluethumbart/afterpay-ruby)
+
 # Afterpay Ruby
 
 Based on the [API docs](https://docs.afterpay.com/au-online-api-v1.html)
