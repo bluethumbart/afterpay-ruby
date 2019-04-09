@@ -6,10 +6,10 @@ Gem::Specification.new do |spec|
   spec.name          = "afterpay-ruby"
   spec.version       = Afterpay::VERSION
   spec.authors       = ["Eli"]
-  spec.email         = ["iamchoongg@gmail.com"]
+  spec.email         = ["chonghui@bluethumb.com.au"]
 
   spec.summary       = "Afterpay ruby wrapper"
-  spec.homepage      = "https://github.com/choonggg/afterpay-ruby"
+  spec.homepage      = "https://github.com/bluethumbart/afterpay-ruby"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -18,8 +18,7 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
     spec.metadata["homepage_uri"] = spec.homepage
-    spec.metadata["source_code_uri"] = "https://github.com/choonggg/afterpay-ruby"
-    # spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+    spec.metadata["source_code_uri"] = "https://github.com/bluethumbart/afterpay-ruby"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
