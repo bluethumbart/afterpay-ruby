@@ -40,7 +40,11 @@ Afterpay.configure do |config|
 end
 ```
 
-### Creating an Order - [api docs](https://docs.afterpay.com/au-online-api-v1.html#create-order)
+### Creating an Order
+
+[api docs](https://docs.afterpay.com/au-online-api-v1.html#create-order)
+
+Order accepts a [Consumer](https://github.com/bluethumbart/afterpay-ruby#consumer-object) and an array of [Item](https://github.com/bluethumbart/afterpay-ruby#item-object) object which are required.
 
 ```ruby
 order = Afterpay::Order.create(
@@ -90,6 +94,36 @@ payment.order
 => <Afterpay::Order ...>
 payment.status
 => APPROVED
+```
+
+### Consumer Object
+
+[api docs](https://docs.afterpay.com/au-online-api-v1.html#consumer-object)
+
+Consumer contains the details of the payee which will be serialized to API's format.
+
+```ruby
+Afterpay::Consumer.new(
+  email: <String>,
+  phone: <String>,
+  first_name: <String>,
+  last_name: <String>,
+)
+```
+
+### Item Object
+
+[api docs](https://docs.afterpay.com/au-online-api-v1.html#item-object)
+
+Item holds the details of purchace per item.
+
+```ruby
+Afterpay::Item.new(
+  name: <String>,
+  price: <Money>,
+  sku: <String | optional>,
+  quantity: <Number | defaults to 1>,
+)
 ```
 
 ## Development

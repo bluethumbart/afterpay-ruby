@@ -6,7 +6,7 @@ module Afterpay
   class Item
     attr_accessor :name, :sku, :quantity, :price
 
-    def initialize(name:, sku:, price:, quantity: 1)
+    def initialize(name:, price:, sku: nil, quantity: 1)
       @name = name
       @sku = sku
       @quantity = quantity
