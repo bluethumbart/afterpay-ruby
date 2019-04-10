@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    afterpay-ruby (0.1.0)
+    afterpay-ruby (0.1.1)
       faraday (>= 0.8, < 1.0)
       faraday_middleware (~> 0.13.1)
       money (>= 6.7.1, < 7.0.0)
