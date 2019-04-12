@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/bluethumbart/afterpay-ruby.svg?branch=master)](https://travis-ci.org/bluethumbart/afterpay-ruby)
 [![Coverage Status](https://coveralls.io/repos/github/bluethumbart/afterpay-ruby/badge.svg?branch=master)](https://coveralls.io/github/bluethumbart/afterpay-ruby?branch=master)
+[![Gem Version](https://badge.fury.io/rb/afterpay-ruby.svg)](https://badge.fury.io/rb/afterpay-ruby)
 
 # Afterpay Ruby
 
