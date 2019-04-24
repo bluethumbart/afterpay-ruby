@@ -107,6 +107,7 @@ module Afterpay
       else
         @error = Error.new(response)
       end
+      self
     end
 
     def success?
