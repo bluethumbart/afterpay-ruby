@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"totalAmount":{"amount":1000.0,"currency":"AUD"},"consumer":{"phoneNumber":12345678910,"givenNames":"FName","surname":"LName","email":"johndoe@mail.com"},"items":[{"name":"Item
-        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"http://example.com/success","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":null,"paymentType":null}'
+        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"http://example.com/success","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":null,"paymentType":null,"discounts":[{"displayName":"Coupon","amount":{"amount":1000.0,"currency":"AUD"}}]}'
     headers:
       Authorization:
       - Basic <AUTH TOKEN>
@@ -20,7 +20,7 @@ http_interactions:
       message: Created
     headers:
       date:
-      - Fri, 10 May 2019 11:17:27 GMT
+      - Fri, 10 May 2019 11:19:25 GMT
       content-type:
       - application/json
       content-length:
@@ -28,10 +28,10 @@ http_interactions:
       connection:
       - close
       set-cookie:
-      - __cfduid=d765f078c27107f307455ce409a368b061557487047; expires=Sat, 09-May-20
-        11:17:27 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      - __cfduid=d7e39bf1d5c2fbc8986e0c79282852f901557487165; expires=Sat, 09-May-20
+        11:19:25 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
       http_correlation_id:
-      - 5ctk2emyvz3ptuhghepox3zoum
+      - yhkaddpztefndsl5ux3xsn5xyu
       strict-transport-security:
       - max-age=31536000; includeSubDomains; preload
       expect-ct:
@@ -39,14 +39,14 @@ http_interactions:
       server:
       - cloudflare
       cf-ray:
-      - 4d4b81bd9f0d7042-SIN
+      - 4d4b849fae69aa7e-SIN
     body:
       encoding: UTF-8
       string: |-
         {
-          "token" : "un9hpsk4qtqhq2sch2be5fvr3gm8o4huh3povdkb4tm19olcugsp",
-          "expires" : "2019-05-10T11:47:27.447Z"
+          "token" : "vvtk9kmo2p16b1v71jsh22oo3l44fslbg4t29v802b5hart0k53r",
+          "expires" : "2019-05-10T11:49:25.497Z"
         }
     http_version: 
-  recorded_at: Fri, 10 May 2019 11:17:27 GMT
+  recorded_at: Fri, 10 May 2019 11:19:25 GMT
 recorded_with: VCR 4.0.0

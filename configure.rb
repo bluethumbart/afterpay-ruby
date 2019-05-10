@@ -3,6 +3,8 @@
 require "dotenv"
 Dotenv.load
 
+Money.default_currency = ENV["DEFAULT_CURRENCY"] || "AUD"
+
 Afterpay.configure do |config|
   config.app_id = ENV["APP_ID"]
   config.secret = ENV["SECRET"]
@@ -13,3 +15,5 @@ Afterpay.configure do |config|
   # Sets the environment for Afterpay
   # config.env = "sandbox" # :live
 end
+
+Afterpay.config.freeze

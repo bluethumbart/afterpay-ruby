@@ -19,14 +19,14 @@ module Afterpay
                    :shipping,
                    :merchant_reference
 
-  # Finds Order from Afterpay API
-  # @param token [String]
-  # @return [Order]
-  def self.find(token)
-    request = Afterpay.client.get("/v1/orders/#{token}")
+    # Finds Order from Afterpay API
+    # @param token [String]
+    # @return [Order]
+    def self.find(token)
+      request = Afterpay.client.get("/v1/orders/#{token}")
 
-    Order.from_response(request.body)
-  end
+      Order.from_response(request.body)
+    end
 
     # Builds Order from response
     # @param response [Hash] response params from API
@@ -75,7 +75,7 @@ module Afterpay
 
     # Builds structure to API specs
     def to_hash
-      {
+      data = {
         totalAmount: {
           amount: total.to_f,
           currency: total.currency.iso_code
@@ -91,6 +91,12 @@ module Afterpay
         shippingAmount: attributes.shipping,
         paymentType: attributes.payment_type
       }
+
+      if attributes.discounts
+        data[:discounts] = attributes.discounts.map(&:to_hash)
+      end
+
+      data
     end
 
     # Sends the create request to Afterpay server

@@ -18,6 +18,13 @@ RSpec.describe Afterpay::Order do
     )
   end
 
+  let(:discount) do
+    Afterpay::Discount.new(
+      name: "Coupon",
+      amount: Money.from_amount(1000, "AUD")
+    )
+  end
+
   subject(:order) do
     described_class.new(
       total: Money.from_amount(1000, "AUD"),
@@ -43,6 +50,16 @@ RSpec.describe Afterpay::Order do
       expect(order.success?).to be false
       expect(order.error).not_to be_nil
     end
+
+    context "with discounts", :vcr do
+      it "returns valid Order" do
+        order.attributes.discounts = [discount]
+        order.create
+
+        expect(order.success?).to be true
+        expect(order.token).to eq(order.token)
+      end
+    end
   end
 
   describe "#to_hash" do
@@ -55,6 +72,16 @@ RSpec.describe Afterpay::Order do
       expect(hash[:items]).not_to be_empty
       expect(hash[:merchant][:redirectConfirmUrl]).to match(/success/)
       expect(hash[:merchant][:redirectCancelUrl]).to match(/cancel/)
+    end
+
+    context "with optional discounts" do
+      it "includes discounts in Order" do
+        order.attributes.discounts = [discount]
+        hash = order.to_hash
+
+        expect(order.discounts.sample).to be_a(Afterpay::Discount)
+        expect(hash[:discounts]).not_to be_empty
+      end
     end
   end
 
