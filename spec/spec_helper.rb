@@ -1,7 +1,7 @@
 require "vcr"
 require "dotenv"
 
-require 'coveralls'
+require "coveralls"
 Coveralls.wear!
 
 # require "simplecov"

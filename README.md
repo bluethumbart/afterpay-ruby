@@ -53,7 +53,11 @@ order = Afterpay::Order.create(
   consumer: <Afterpay::Consumer>,
   items: [<Afterpay::Item>],
   success_url: <String>,
-  cancel_url: <String>
+  cancel_url: <String>,
+  reference: <String>,
+  discounts: [<Afterpay::Discount | optional>],
+  billing: <Afterpay::Address | optional>,
+  shipping: <Afterpay::Address | optional>,
 )
 
 # OR
@@ -124,6 +128,38 @@ Afterpay::Item.new(
   price: <Money>,
   sku: <String | optional>,
   quantity: <Number | defaults to 1>,
+)
+```
+
+### Discount Object
+
+[api docs](https://docs.afterpay.com/au-online-api-v1.html#discount-object)
+
+Discount Applied to the Order
+
+```ruby
+Afterpay::Discount.new(
+  name: <String>,
+  amount: <Money>
+)
+```
+
+### Address Object
+
+[api docs](https://docs.afterpay.com/au-online-api-v1.html#contact-object)
+
+Item holds the details of purchace per item.
+
+```ruby
+Afterpay::Address.new(
+  name: <String>,
+  line_1: <String>,
+  line_2: <String | optional>,
+  suburb: <String | optional>,
+  state: <String>,
+  postcode: <String | Number>,
+  country: <String | optional>,
+  phone: <String>
 )
 ```
 

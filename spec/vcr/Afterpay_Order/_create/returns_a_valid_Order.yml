@@ -20,7 +20,7 @@ http_interactions:
       message: Created
     headers:
       date:
-      - Fri, 10 May 2019 11:17:27 GMT
+      - Fri, 10 May 2019 12:16:07 GMT
       content-type:
       - application/json
       content-length:
@@ -28,10 +28,10 @@ http_interactions:
       connection:
       - close
       set-cookie:
-      - __cfduid=d765f078c27107f307455ce409a368b061557487047; expires=Sat, 09-May-20
-        11:17:27 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      - __cfduid=dfd345222cdbdfcb7ad191c11d44c3cd01557490566; expires=Sat, 09-May-20
+        12:16:06 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
       http_correlation_id:
-      - 5ctk2emyvz3ptuhghepox3zoum
+      - fhkd2nsgl5x7gops2hd5t634ke
       strict-transport-security:
       - max-age=31536000; includeSubDomains; preload
       expect-ct:
@@ -39,14 +39,14 @@ http_interactions:
       server:
       - cloudflare
       cf-ray:
-      - 4d4b81bd9f0d7042-SIN
+      - 4d4bd7a94ea56fe8-SIN
     body:
       encoding: UTF-8
       string: |-
         {
-          "token" : "un9hpsk4qtqhq2sch2be5fvr3gm8o4huh3povdkb4tm19olcugsp",
-          "expires" : "2019-05-10T11:47:27.447Z"
+          "token" : "o5deeu9ulkcr8rdek24n86b1aic9etl9emjriuqvug7uluaqcpbe",
+          "expires" : "2019-05-10T12:46:07.133Z"
         }
     http_version: 
-  recorded_at: Fri, 10 May 2019 11:17:27 GMT
+  recorded_at: Fri, 10 May 2019 12:16:07 GMT
 recorded_with: VCR 4.0.0

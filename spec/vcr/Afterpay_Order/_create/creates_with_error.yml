@@ -6,7 +6,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"totalAmount":{"amount":1000.0,"currency":"AUD"},"consumer":{"phoneNumber":12345678910,"givenNames":"FName","surname":"LName","email":"johndoe@mail.com"},"items":[{"name":"Item
-        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":null,"paymentType":"PAY_BY_INSTALLMENT"}'
+        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":null,"paymentType":null}'
     headers:
       Authorization:
       - Basic <AUTH TOKEN>
@@ -20,7 +20,7 @@ http_interactions:
       message: ''
     headers:
       date:
-      - Tue, 09 Apr 2019 08:38:30 GMT
+      - Fri, 10 May 2019 12:16:07 GMT
       content-type:
       - application/json
       content-length:
@@ -28,10 +28,10 @@ http_interactions:
       connection:
       - close
       set-cookie:
-      - __cfduid=d847037bf8b22d1a8f1dbaede7982042c1554799110; expires=Wed, 08-Apr-20
-        08:38:30 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      - __cfduid=d994e86371392482ee25d1aaa0c17c0641557490567; expires=Sat, 09-May-20
+        12:16:07 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
       http_correlation_id:
-      - nfbkk3nledbn3hzgt3gdht63k4
+      - cff35wny5o2l6yb3jogohiloge
       strict-transport-security:
       - max-age=31536000; includeSubDomains; preload
       expect-ct:
@@ -39,16 +39,16 @@ http_interactions:
       server:
       - cloudflare
       cf-ray:
-      - 4c4b2a473c00c31f-SIN
+      - 4d4bd7adce06a9ee-SIN
     body:
       encoding: UTF-8
       string: |-
         {
           "errorCode" : "invalid_object",
-          "errorId" : "0f3597e261059508",
-          "message" : "merchant.redirectConfirmUrl may not be empty, merchant.redirectConfirmUrl must be a valid URL",
+          "errorId" : "ea536a7adf46d2c7",
+          "message" : "merchant.redirectConfirmUrl must be a valid URL, merchant.redirectConfirmUrl may not be empty",
           "httpStatusCode" : 422
         }
     http_version: 
-  recorded_at: Tue, 09 Apr 2019 08:38:30 GMT
+  recorded_at: Fri, 10 May 2019 12:16:07 GMT
 recorded_with: VCR 4.0.0

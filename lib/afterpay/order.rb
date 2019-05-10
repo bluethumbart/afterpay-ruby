@@ -65,6 +65,9 @@ module Afterpay
     #   @param success_url [String] the path to redirect on successful payment
     #   @param cancel_url [String] the path to redirect on failed payment
     #   @param payment_type [String] Payment type defaults to {Config#type}
+    #   @param discounts [Array<Afterpay::Discount>] optional discounts
+    #   @param billing [Afterpay::Address>] optional the billing Address
+    #   @param shipping [Afterpay::Address>] optional the shipping Address
     def initialize(attributes = {})
       @attributes = OpenStruct.new(attributes)
       @attributes.payment_type ||= Afterpay.config.type
@@ -86,16 +89,15 @@ module Afterpay
           redirectConfirmUrl: attributes.success_url,
           redirectCancelUrl: attributes.cancel_url
         },
-        merchantReference: attributes.merchant_reference,
+        merchantReference: attributes.reference,
         taxAmount: attributes.tax,
         shippingAmount: attributes.shipping,
         paymentType: attributes.payment_type
       }
 
-      if attributes.discounts
-        data[:discounts] = attributes.discounts.map(&:to_hash)
-      end
-
+      data[:discounts] = attributes.discounts.map(&:to_hash) if attributes.discounts
+      data[:billing] = attributes.billing.to_hash if attributes.billing
+      data[:shipping] = attributes.shipping.to_hash if attributes.shipping
       data
     end
 

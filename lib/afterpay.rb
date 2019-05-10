@@ -10,6 +10,7 @@ require_relative "afterpay/order"
 require_relative "afterpay/payment"
 require_relative "afterpay/error"
 require_relative "afterpay/discount"
+require_relative "afterpay/address"
 require_relative "afterpay/money_util"
 
 module Afterpay

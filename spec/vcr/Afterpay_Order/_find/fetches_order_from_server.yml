@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api-sandbox.afterpay.com/v1/orders/tgiibd59adl9rldhefaqm9jcgnhca8dvv07t9gcq7lboo6btsdfq
+    uri: https://api-sandbox.afterpay.com/v1/orders/le4bavv8rl6m0m3d2rq7k5dvpvmoeetrhro64m0ihoj7ou8idmtv
     body:
       encoding: US-ASCII
       string: ''
@@ -17,20 +17,20 @@ http_interactions:
       message: OK
     headers:
       date:
-      - Tue, 09 Apr 2019 06:47:13 GMT
+      - Fri, 10 May 2019 12:14:47 GMT
       content-type:
       - application/json
       content-length:
-      - '384'
+      - '405'
       connection:
       - close
       set-cookie:
-      - __cfduid=d7478fd9012bdbf218cc8295382353b331554792433; expires=Wed, 08-Apr-20
-        06:47:13 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      - __cfduid=d9f79708a7b3cbe548350fb375c1307dc1557490487; expires=Sat, 09-May-20
+        12:14:47 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
       cache-control:
       - private, no-cache, no-store, no-transform, must-revalidate, max-age=0
       http_correlation_id:
-      - 7iptmxcfhgts3ex4tgzypxdchy
+      - qyjdnexzg5meq3qvhram72v3ca
       vary:
       - Accept-Encoding
       accept-ranges:
@@ -42,13 +42,13 @@ http_interactions:
       server:
       - cloudflare
       cf-ray:
-      - 4c4a874718c27038-SIN
+      - 4d4bd5b838d6cbe4-SIN
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "expires" : "2019-04-09T06:55:39.101Z",
-          "token" : "tgiibd59adl9rldhefaqm9jcgnhca8dvv07t9gcq7lboo6btsdfq",
+          "expires" : "2019-05-10T12:28:10.939Z",
+          "token" : "le4bavv8rl6m0m3d2rq7k5dvpvmoeetrhro64m0ihoj7ou8idmtv",
           "totalAmount" : {
             "amount" : "1000.00",
             "currency" : "AUD"
@@ -74,8 +74,14 @@ http_interactions:
               "currency" : "AUD"
             }
           } ],
-          "discounts" : [ ]
+          "discounts" : [ {
+            "displayName" : "Coupon",
+            "amount" : {
+              "amount" : "1000.00",
+              "currency" : "AUD"
+            }
+          } ]
         }
     http_version: 
-  recorded_at: Tue, 09 Apr 2019 06:47:13 GMT
+  recorded_at: Fri, 10 May 2019 12:14:47 GMT
 recorded_with: VCR 4.0.0

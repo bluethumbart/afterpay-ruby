@@ -1,23 +1,6 @@
 require "spec_helper"
 
 RSpec.describe Afterpay::Order do
-  let(:consumer) do
-    Afterpay::Consumer.new(
-      email: "johndoe@mail.com",
-      phone: 12345678910,
-      first_name: "FName",
-      last_name: "LName"
-    )
-  end
-
-  let(:item) do
-    Afterpay::Item.new(
-      name: "Item Name",
-      sku: 1,
-      price: Money.from_amount(1000, "AUD")
-    )
-  end
-
   let(:discount) do
     Afterpay::Discount.new(
       name: "Coupon",
@@ -25,11 +8,32 @@ RSpec.describe Afterpay::Order do
     )
   end
 
+  # Unused as API does not seem to accept address.
+  let(:address) do
+    Afterpay::Address.new(
+      name: "John Doe",
+      line_1: "An address",
+      suburb: "Melbourne",
+      state: "QLD",
+      postcode: 3000,
+      phone: 0400000000,
+    )
+  end
+
   subject(:order) do
     described_class.new(
       total: Money.from_amount(1000, "AUD"),
-      consumer: consumer,
-      items: [item],
+      consumer: Afterpay::Consumer.new(
+        email: "johndoe@mail.com",
+        phone: 12345678910,
+        first_name: "FName",
+        last_name: "LName"
+      ),
+      items: [Afterpay::Item.new(
+        name: "Item Name",
+        sku: 1,
+        price: Money.from_amount(1000, "AUD")
+      )],
       success_url: "http://example.com/success",
       cancel_url: "http://example.com/cancel"
     )
@@ -37,6 +41,7 @@ RSpec.describe Afterpay::Order do
 
   describe "#create" do
     it "returns a valid Order", :vcr do
+      pp order.to_hash
       order.create
 
       expect(order.success?).to be true
@@ -86,7 +91,8 @@ RSpec.describe Afterpay::Order do
   end
 
   describe "#find" do
-    let(:token) { "tgiibd59adl9rldhefaqm9jcgnhca8dvv07t9gcq7lboo6btsdfq" }
+    let(:token) { "le4bavv8rl6m0m3d2rq7k5dvpvmoeetrhro64m0ihoj7ou8idmtv" }
+
     it "fetches order from server", :vcr do
       fetched_order = described_class.find(token)
 
