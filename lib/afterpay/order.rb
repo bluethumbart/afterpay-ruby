@@ -1,24 +1,13 @@
 # frozen_string_literal: true
 
-require "ostruct"
-require "forwardable"
-
 module Afterpay
   # The Order object for creating an order to `/v1/orders`
   class Order
-    extend Forwardable
+    attr_accessor :total, :consumer, :items, :shipping, :tax, :discounts,
+                  :billing, :shipping_address, :billing_address, :reference,
+                  :payment_type, :success_url, :cancel_url
 
-    def_delegators :@attributes,
-                   :total,
-                   :consumer,
-                   :items,
-                   :shipping,
-                   :tax,
-                   :discounts,
-                   :billing,
-                   :shipping_address,
-                   :billing_address,
-                   :merchant_reference
+    attr_reader :expiry, :token, :error
 
     # Finds Order from Afterpay API
     # @param token [String]
@@ -36,14 +25,14 @@ module Afterpay
       return nil if response.nil?
 
       new(
-        total: MoneyUtil.from_response(response[:total]),
+        total: Utils::Money.from_response(response[:total]),
         consumer: Consumer.from_response(response[:consumer]),
         items: response[:items].map { |item| Item.from_response(item) },
-        # billing: response[:billing],
-        # shipping: response[:shipping],
-        # discounts: Discount.from_response(response[:discounts]),
-        tax: MoneyUtil.from_response(response[:taxAmount]),
-        shipping: MoneyUtil.from_response(response[:shippingAmount])
+        billing_address: Address.from_response(response[:billing]),
+        shipping_address: Address.from_response(response[:shipping]),
+        discounts: response[:discounts].map { |discount| Discount.from_response(discount) },
+        tax: Utils::Money.from_response(response[:taxAmount]),
+        shipping: Utils::Money.from_response(response[:shippingAmount])
       )
     end
 
@@ -54,8 +43,6 @@ module Afterpay
     def self.create(*args)
       new(*args).create
     end
-
-    attr_reader :attributes, :expiry, :token, :error
 
     # Initializes an Order object
     #
@@ -71,35 +58,30 @@ module Afterpay
     #   @param billing_address [<Afterpay::Address>] optional the billing Address
     #   @param shipping_address [<Afterpay::Address>] optional the shipping Address
     def initialize(attributes = {})
-      @attributes = OpenStruct.new(attributes)
-      @attributes.payment_type ||= Afterpay.config.type
-      @token = @attributes.token || nil
-      @expiry = nil
+      attributes.each { |key, value| instance_variable_set(:"@#{key}", value) }
+      @apayment_type ||= Afterpay.config.type
+      @token ||= nil
+      @expiry ||= nil
       @error = nil
     end
 
     # Builds structure to API specs
     def to_hash
       data = {
-        totalAmount: {
-          amount: total.to_f,
-          currency: total.currency.iso_code
-        },
+        totalAmount: Utils::Money.api_hash(total),
         consumer: consumer.to_hash,
         items: items.map(&:to_hash),
         merchant: {
-          redirectConfirmUrl: attributes.success_url,
-          redirectCancelUrl: attributes.cancel_url
+          redirectConfirmUrl: success_url,
+          redirectCancelUrl: cancel_url
         },
-        merchantReference: attributes.reference,
-        taxAmount: attributes.tax,
-        shippingAmount: {
-          amount: shipping.to_f,
-          currency: shipping.currency.iso_code
-        },
-        paymentType: attributes.payment_type
+        merchantReference: reference,
+        taxAmount: tax,
+        paymentType: payment_type
       }
 
+      data[:taxAmount] = Utils::Money.api_hash(tax) if tax
+      data[:shippingAmount] = Utils::Money.api_hash(shipping) if shipping
       data[:discounts] = discounts.map(&:to_hash) if discounts
       data[:billing] = billing_address.to_hash if billing_address
       data[:shipping] = shipping_address.to_hash if shipping_address

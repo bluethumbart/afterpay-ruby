@@ -33,7 +33,7 @@ module Afterpay
         name: response[:name],
         sku: response[:sku],
         quantity: response[:quantity],
-        price: MoneyUtil.from_response(response[:price])
+        price: Utils::Money.from_response(response[:price])
       )
     end
   end

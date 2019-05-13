@@ -29,3 +29,5 @@ Metrics/MethodLength:
 Naming/FileName:
   Exclude:
     - "lib/afterpay-ruby.rb"
+Naming/VariableNumber:
+  Enabled: false

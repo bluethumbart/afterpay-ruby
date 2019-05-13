@@ -15,7 +15,7 @@ RSpec.describe Afterpay::Order do
       suburb: "Melbourne",
       state: "QLD",
       postcode: 3000,
-      phone: 0400000000,
+      phone: 1402312000
     )
   end
 
@@ -34,16 +34,12 @@ RSpec.describe Afterpay::Order do
         price: Money.from_amount(1000, "AUD")
       )],
       success_url: "http://example.com/success",
-      cancel_url: "http://example.com/cancel",
-      shipping: Money.from_amount(50, "AUD"),
-      shipping_address: address,
-      billing_address: address
+      cancel_url: "http://example.com/cancel"
     )
   end
 
   describe "#create" do
-    it "returns a valid Order", :vcr do
-      pp order.to_hash
+    it "returns a successful Order", :vcr do
       order.create
 
       expect(order.success?).to be true
@@ -51,16 +47,47 @@ RSpec.describe Afterpay::Order do
     end
 
     it "creates with error", :vcr do
-      order.attributes.success_url = ""
+      order.success_url = ""
       order.create
 
       expect(order.success?).to be false
       expect(order.error).not_to be_nil
     end
 
+    context "with optional values" do
+      subject(:order) do
+        described_class.new(
+          total: Money.from_amount(1000, "AUD"),
+          consumer: Afterpay::Consumer.new(
+            email: "johndoe@mail.com",
+            phone: 12345678910,
+            first_name: "FName",
+            last_name: "LName"
+          ),
+          items: [Afterpay::Item.new(
+            name: "Item Name",
+            sku: 1,
+            price: Money.from_amount(1000, "AUD")
+          )],
+          success_url: "http://example.com/success",
+          cancel_url: "http://example.com/cancel",
+          shipping: Money.from_amount(50, "AUD"),
+          shipping_address: address,
+          billing_address: address
+        )
+      end
+
+      it "returns successful Order", :vcr do
+        order.create
+
+        expect(order.success?).to be true
+        expect(order.token).to eq(order.token)
+      end
+    end
+
     context "with discounts", :vcr do
-      it "returns valid Order" do
-        order.attributes.discounts = [discount]
+      it "returns successful Order" do
+        order.discounts = [discount]
         order.create
 
         expect(order.success?).to be true
@@ -83,7 +110,7 @@ RSpec.describe Afterpay::Order do
 
     context "with optional discounts" do
       it "includes discounts in Order" do
-        order.attributes.discounts = [discount]
+        order.discounts = [discount]
         hash = order.to_hash
 
         expect(order.discounts.sample).to be_a(Afterpay::Discount)

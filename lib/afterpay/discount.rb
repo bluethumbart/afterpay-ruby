@@ -12,11 +12,17 @@ module Afterpay
     def to_hash
       {
         displayName: name,
-        amount: {
-          amount: amount.to_f,
-          currency: amount.currency.iso_code
-        }
+        amount: Utils::Money.api_hash(amount)
       }
+    end
+
+    def self.from_response(response)
+      return nil if response.nil?
+
+      new(
+        name: response[:display_name],
+        amount: Utils::Money.from_response(response[:amount])
+      )
     end
   end
 end

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require "money"
+require_relative "afterpay/utils/money"
+
 require_relative "afterpay/version"
 require_relative "afterpay/client"
 require_relative "afterpay/config"
@@ -11,7 +13,6 @@ require_relative "afterpay/payment"
 require_relative "afterpay/error"
 require_relative "afterpay/discount"
 require_relative "afterpay/address"
-require_relative "afterpay/money_util"
 
 module Afterpay
   class << self

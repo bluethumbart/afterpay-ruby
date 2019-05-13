@@ -26,7 +26,7 @@ module Afterpay
       @id = attributes[:id]
       @status = attributes[:status]
       @created = attributes[:created]
-      @total = MoneyUtil.from_response(attributes[:total])
+      @total = Utils::Money.from_response(attributes[:total])
       @order = Order.from_response(attributes[:orderDetails])
       @error = Error.new(attributes) if attributes[:errorId]
     end
