@@ -6,7 +6,9 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"totalAmount":{"amount":1000.0,"currency":"AUD"},"consumer":{"phoneNumber":12345678910,"givenNames":"FName","surname":"LName","email":"johndoe@mail.com"},"items":[{"name":"Item
-        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":null,"paymentType":null}'
+        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":{"amount":50.0,"currency":"AUD"},"paymentType":null,"billing":{"name":"John
+        Doe","line1":"An address","suburb":"Melbourne","state":"QLD","postcode":"3000","countryCode":"AU","phoneNumber":"67108864"},"shipping":{"name":"John
+        Doe","line1":"An address","suburb":"Melbourne","state":"QLD","postcode":"3000","countryCode":"AU","phoneNumber":"67108864"}}'
     headers:
       Authorization:
       - Basic <AUTH TOKEN>
@@ -20,7 +22,7 @@ http_interactions:
       message: ''
     headers:
       date:
-      - Fri, 10 May 2019 12:16:07 GMT
+      - Mon, 13 May 2019 03:21:33 GMT
       content-type:
       - application/json
       content-length:
@@ -28,10 +30,10 @@ http_interactions:
       connection:
       - close
       set-cookie:
-      - __cfduid=d994e86371392482ee25d1aaa0c17c0641557490567; expires=Sat, 09-May-20
-        12:16:07 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      - __cfduid=dd7fded32639494c2331c70f3808c99c61557717693; expires=Tue, 12-May-20
+        03:21:33 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
       http_correlation_id:
-      - cff35wny5o2l6yb3jogohiloge
+      - xqw2a7te2yhruikkuugm2hzute
       strict-transport-security:
       - max-age=31536000; includeSubDomains; preload
       expect-ct:
@@ -39,16 +41,16 @@ http_interactions:
       server:
       - cloudflare
       cf-ray:
-      - 4d4bd7adce06a9ee-SIN
+      - 4d6180bf8872c31d-SIN
     body:
       encoding: UTF-8
       string: |-
         {
           "errorCode" : "invalid_object",
-          "errorId" : "ea536a7adf46d2c7",
-          "message" : "merchant.redirectConfirmUrl must be a valid URL, merchant.redirectConfirmUrl may not be empty",
+          "errorId" : "4618cc0e97695d58",
+          "message" : "merchant.redirectConfirmUrl may not be empty, merchant.redirectConfirmUrl must be a valid URL",
           "httpStatusCode" : 422
         }
     http_version: 
-  recorded_at: Fri, 10 May 2019 12:16:07 GMT
+  recorded_at: Mon, 13 May 2019 03:21:33 GMT
 recorded_with: VCR 4.0.0

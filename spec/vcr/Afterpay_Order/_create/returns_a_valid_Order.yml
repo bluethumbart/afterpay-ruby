@@ -6,7 +6,9 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"totalAmount":{"amount":1000.0,"currency":"AUD"},"consumer":{"phoneNumber":12345678910,"givenNames":"FName","surname":"LName","email":"johndoe@mail.com"},"items":[{"name":"Item
-        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"http://example.com/success","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":null,"paymentType":null}'
+        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"http://example.com/success","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":{"amount":50.0,"currency":"AUD"},"paymentType":null,"billing":{"name":"John
+        Doe","line1":"An address","suburb":"Melbourne","state":"QLD","postcode":"3000","countryCode":"AU","phoneNumber":"67108864"},"shipping":{"name":"John
+        Doe","line1":"An address","suburb":"Melbourne","state":"QLD","postcode":"3000","countryCode":"AU","phoneNumber":"67108864"}}'
     headers:
       Authorization:
       - Basic <AUTH TOKEN>
@@ -20,7 +22,7 @@ http_interactions:
       message: Created
     headers:
       date:
-      - Fri, 10 May 2019 12:16:07 GMT
+      - Mon, 13 May 2019 03:21:33 GMT
       content-type:
       - application/json
       content-length:
@@ -28,10 +30,10 @@ http_interactions:
       connection:
       - close
       set-cookie:
-      - __cfduid=dfd345222cdbdfcb7ad191c11d44c3cd01557490566; expires=Sat, 09-May-20
-        12:16:06 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      - __cfduid=dd824007b1c9a3f034a108cd16c57bac81557717692; expires=Tue, 12-May-20
+        03:21:32 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
       http_correlation_id:
-      - fhkd2nsgl5x7gops2hd5t634ke
+      - k5heast2onyastw2p2b2kfzkta
       strict-transport-security:
       - max-age=31536000; includeSubDomains; preload
       expect-ct:
@@ -39,14 +41,14 @@ http_interactions:
       server:
       - cloudflare
       cf-ray:
-      - 4d4bd7a94ea56fe8-SIN
+      - 4d6180bd099e6f8e-SIN
     body:
       encoding: UTF-8
       string: |-
         {
-          "token" : "o5deeu9ulkcr8rdek24n86b1aic9etl9emjriuqvug7uluaqcpbe",
-          "expires" : "2019-05-10T12:46:07.133Z"
+          "token" : "ul4g55b15v26spuf1clkgk59j2aa6ijgmjou611i1jhda7oehnv8",
+          "expires" : "2019-05-13T03:51:33.095Z"
         }
     http_version: 
-  recorded_at: Fri, 10 May 2019 12:16:07 GMT
+  recorded_at: Mon, 13 May 2019 03:21:33 GMT
 recorded_with: VCR 4.0.0

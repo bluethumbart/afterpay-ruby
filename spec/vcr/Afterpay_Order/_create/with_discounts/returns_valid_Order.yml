@@ -6,7 +6,9 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"totalAmount":{"amount":1000.0,"currency":"AUD"},"consumer":{"phoneNumber":12345678910,"givenNames":"FName","surname":"LName","email":"johndoe@mail.com"},"items":[{"name":"Item
-        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"http://example.com/success","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":null,"paymentType":null,"discounts":[{"displayName":"Coupon","amount":{"amount":1000.0,"currency":"AUD"}}]}'
+        Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"http://example.com/success","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"shippingAmount":{"amount":50.0,"currency":"AUD"},"paymentType":null,"discounts":[{"displayName":"Coupon","amount":{"amount":1000.0,"currency":"AUD"}}],"billing":{"name":"John
+        Doe","line1":"An address","suburb":"Melbourne","state":"QLD","postcode":"3000","countryCode":"AU","phoneNumber":"67108864"},"shipping":{"name":"John
+        Doe","line1":"An address","suburb":"Melbourne","state":"QLD","postcode":"3000","countryCode":"AU","phoneNumber":"67108864"}}'
     headers:
       Authorization:
       - Basic <AUTH TOKEN>
@@ -20,7 +22,7 @@ http_interactions:
       message: Created
     headers:
       date:
-      - Fri, 10 May 2019 12:16:07 GMT
+      - Mon, 13 May 2019 03:21:33 GMT
       content-type:
       - application/json
       content-length:
@@ -28,10 +30,10 @@ http_interactions:
       connection:
       - close
       set-cookie:
-      - __cfduid=df2b34ce3c443cfaa05c876155f7e83271557490567; expires=Sat, 09-May-20
-        12:16:07 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
+      - __cfduid=d8191c334c0620992fe46a408a830da311557717693; expires=Tue, 12-May-20
+        03:21:33 GMT; path=/; domain=.afterpay.com; HttpOnly; Secure
       http_correlation_id:
-      - uonuehd3wg2icge27dh3ztnbom
+      - q4wpq7bvcbhr3qwiwtrke7nnee
       strict-transport-security:
       - max-age=31536000; includeSubDomains; preload
       expect-ct:
@@ -39,14 +41,14 @@ http_interactions:
       server:
       - cloudflare
       cf-ray:
-      - 4d4bd7b02d5aaa4e-SIN
+      - 4d6180c0bf31706c-SIN
     body:
       encoding: UTF-8
       string: |-
         {
-          "token" : "787obqh7demnnq8o06n3e2pd3iibltbnha2tcd1o2o73n3m9djmf",
-          "expires" : "2019-05-10T12:46:07.814Z"
+          "token" : "4o5kvk5303gugluf3vl417jnmh64jfvu3f98rl1onih1842gt0r9",
+          "expires" : "2019-05-13T03:51:33.665Z"
         }
     http_version: 
-  recorded_at: Fri, 10 May 2019 12:16:08 GMT
+  recorded_at: Mon, 13 May 2019 03:21:33 GMT
 recorded_with: VCR 4.0.0

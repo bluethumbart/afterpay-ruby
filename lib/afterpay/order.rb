@@ -16,7 +16,8 @@ module Afterpay
                    :tax,
                    :discounts,
                    :billing,
-                   :shipping,
+                   :shipping_address,
+                   :billing_address,
                    :merchant_reference
 
     # Finds Order from Afterpay API
@@ -65,9 +66,10 @@ module Afterpay
     #   @param success_url [String] the path to redirect on successful payment
     #   @param cancel_url [String] the path to redirect on failed payment
     #   @param payment_type [String] Payment type defaults to {Config#type}
+    #   @param shipping [Money] optional the billing Address
     #   @param discounts [Array<Afterpay::Discount>] optional discounts
-    #   @param billing [Afterpay::Address>] optional the billing Address
-    #   @param shipping [Afterpay::Address>] optional the shipping Address
+    #   @param billing_address [<Afterpay::Address>] optional the billing Address
+    #   @param shipping_address [<Afterpay::Address>] optional the shipping Address
     def initialize(attributes = {})
       @attributes = OpenStruct.new(attributes)
       @attributes.payment_type ||= Afterpay.config.type
@@ -91,13 +93,16 @@ module Afterpay
         },
         merchantReference: attributes.reference,
         taxAmount: attributes.tax,
-        shippingAmount: attributes.shipping,
+        shippingAmount: {
+          amount: shipping.to_f,
+          currency: shipping.currency.iso_code
+        },
         paymentType: attributes.payment_type
       }
 
-      data[:discounts] = attributes.discounts.map(&:to_hash) if attributes.discounts
-      data[:billing] = attributes.billing.to_hash if attributes.billing
-      data[:shipping] = attributes.shipping.to_hash if attributes.shipping
+      data[:discounts] = discounts.map(&:to_hash) if discounts
+      data[:billing] = billing_address.to_hash if billing_address
+      data[:shipping] = shipping_address.to_hash if shipping_address
       data
     end
 

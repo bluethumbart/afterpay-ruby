@@ -55,9 +55,10 @@ order = Afterpay::Order.create(
   success_url: <String>,
   cancel_url: <String>,
   reference: <String>,
+  shipping: <Money | optional>,
   discounts: [<Afterpay::Discount | optional>],
-  billing: <Afterpay::Address | optional>,
-  shipping: <Afterpay::Address | optional>,
+  billing_address: <Afterpay::Address | optional>,
+  shipping_address: <Afterpay::Address | optional>,
 )
 
 # OR

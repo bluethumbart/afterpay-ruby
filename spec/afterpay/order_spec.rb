@@ -8,7 +8,6 @@ RSpec.describe Afterpay::Order do
     )
   end
 
-  # Unused as API does not seem to accept address.
   let(:address) do
     Afterpay::Address.new(
       name: "John Doe",
@@ -35,7 +34,10 @@ RSpec.describe Afterpay::Order do
         price: Money.from_amount(1000, "AUD")
       )],
       success_url: "http://example.com/success",
-      cancel_url: "http://example.com/cancel"
+      cancel_url: "http://example.com/cancel",
+      shipping: Money.from_amount(50, "AUD"),
+      shipping_address: address,
+      billing_address: address
     )
   end
 
