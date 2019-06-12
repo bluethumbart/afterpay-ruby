@@ -4,11 +4,12 @@ module Afterpay
   class Config
     attr_accessor :app_id, :secret, :env, :raise_errors,
                   :type, :maximum_amount, :minimum_amount,
-                  :description, :currency
+                  :description, :currency, :skip_remote_config
 
     def initialize
       @env = "sandbox"
       @raise_errors = true
+      @skip_remote_config = false
     end
 
     # Called only after app_id and secred is set

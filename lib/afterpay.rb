@@ -35,8 +35,8 @@ module Afterpay
   def self.configure
     self.config ||= Config.new
     yield(config) if block_given?
-    config.fetch_remote_config
-    config.freeze if config.env == "live"
+    config.fetch_remote_config unless config.skip_remote_config
+    config
   end
 
   def self.env
