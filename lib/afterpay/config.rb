@@ -4,7 +4,8 @@ module Afterpay
   class Config
     attr_accessor :app_id, :secret, :env, :raise_errors,
                   :type, :maximum_amount, :minimum_amount,
-                  :description, :currency, :skip_remote_config
+                  :description, :currency, :skip_remote_config,
+                  :user_agent_header
 
     def initialize
       @env = "sandbox"
