@@ -38,6 +38,13 @@ Afterpay.configure do |config|
   # Sets the environment for Afterpay
   # defaults to sandbox
   # config.env = "sandbox" # "live"
+
+  # Sets the user agent header for Afterpay requests
+  # Refer https://docs.afterpay.com/au-online-api-v1.html#configuration
+  # config.user_agent_header = {pluginOrModuleOrClientLibrary}/{pluginVersion} ({platform}/{platformVersion}; Merchant/{merchantId}) { merchantUrl }
+  # Example
+  # config.user_agent_header = "Afterpay Module / 1.0.0 (rails/ 5.1.2; Merchant/#{ merchant_id }) #{ merchant_website_url }"
+
 end
 ```
 
