@@ -39,7 +39,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "dotenv", "~> 2.2", ">= 2.2.1"
   spec.add_development_dependency "pry"
 
-  spec.add_dependency "faraday", ">= 0.8", "< 1.0"
-  spec.add_dependency "faraday_middleware", "~> 0.13.1"
+  spec.add_dependency "faraday", "~> 1.0.0"
+  spec.add_dependency "faraday_middleware", "~> 1.0.0"
   spec.add_dependency "money", ">= 6.7.1", "< 7.0.0"
 end
