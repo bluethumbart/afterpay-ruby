@@ -2,25 +2,15 @@
 
 module Afterpay
   class Address
-    attr_accessor :name, :line_1, :line_2, :suburb, :state, :postcode, :country, :phone
+    attr_accessor :name, :line_1, :line_2, :area_1, :area_2, :region, :postcode, :country, :phone
 
-    # Initializes an Order object
-    #
-    # @overload initialize(total:, items:, consumer:, success_url:, cancel_url:, payment_type:)
-    #   @param name [String] The name
-    #   @param line_1 [String] Address line 1
-    #   @param line_2 [String] optional Address line 2
-    #   @param suburb [String] optional Suburb
-    #   @param state [String] State
-    #   @param postcode [String] Postal code
-    #   @param country [String] optional country Code
-    #   @param phone [String|Number] The phone number
     def initialize(attributes = {})
       @name = attributes[:name]
       @line_1 = attributes[:line_1] || ""
       @line_2 = attributes[:line_2] || ""
-      @suburb = attributes[:suburb] || ""
-      @state = attributes[:state] || ""
+      @area_1 = attributes[:area_1] || ""
+      @area_2 = attributes[:area_2] || ""
+      @region = attributes[:region] || ""
       @postcode = attributes[:postcode]
       @country = attributes[:country] || "AU"
       @phone = attributes[:phone]
@@ -31,8 +21,9 @@ module Afterpay
         name: name,
         line1: line_1,
         line2: line_2,
-        suburb: suburb,
-        state: state,
+        area_1: area_1,
+        area_2: area_2,
+        region: region,
         postcode: postcode.to_s,
         countryCode: country,
         phoneNumber: phone.to_s
@@ -46,8 +37,9 @@ module Afterpay
         name: response[:name],
         line_1: response[:line1],
         line_2: response[:line2],
-        suburb: response[:suburb],
-        state: response[:state],
+        area_1: response[:area1],
+        area_2: response[:area2],
+        region: response[:region],
         postcode: response[:postcode],
         country: response[:countryCode],
         phone: response[:phoneNumber]

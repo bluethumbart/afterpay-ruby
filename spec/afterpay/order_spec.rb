@@ -12,8 +12,8 @@ RSpec.describe Afterpay::Order do
     Afterpay::Address.new(
       name: "John Doe",
       line_1: "An address",
-      suburb: "Melbourne",
-      state: "QLD",
+      area_1: 'Melbourne',
+      region: "VIC",
       postcode: 3000,
       phone: 1402312000
     )

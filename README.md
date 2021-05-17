@@ -164,8 +164,9 @@ Afterpay::Address.new(
   name: <String>,
   line_1: <String>,
   line_2: <String | optional>,
-  suburb: <String | optional>,
-  state: <String>,
+  area_1: <String | required | Limited to 128 characters>,
+  area_2: <String | optional | Limited to 128 characters>,
+  region: <String | required | Limited to 128 characters>,
   postcode: <String | Number>,
   country: <String | optional>,
   phone: <String>
