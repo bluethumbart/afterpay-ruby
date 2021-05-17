@@ -137,6 +137,10 @@ Afterpay::Item.new(
   price: <Money>,
   sku: <String | optional>,
   quantity: <Number | defaults to 1>,
+  page_url: <String | optional>,
+  image_url: <String | optional>,
+  categories: [][],
+  estimatedShipmentDate: <String | optional>
 )
 ```
 
