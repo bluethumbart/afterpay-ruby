@@ -6,7 +6,13 @@ RSpec.describe Afterpay::Item do
     described_class.new(
       name: "Item Name",
       sku: 1,
-      price: amount
+      price: amount,
+      page_url: 'https://merchant.example.com/carabiner-354193.html',
+      image_url: 'https://merchant.example.com/carabiner-7378-391453-1.jpg',
+      categories: [
+        ["Sporting Goods", "Climbing Equipment", "Climbing", "Climbing Carabiners"],
+        ["Sale", "Climbing"]],
+      estimated_shipment_date: '2021-03-01'
     )
   end
 
@@ -24,7 +30,13 @@ RSpec.describe Afterpay::Item do
       name: "Item Name",
       sku: 1,
       price: amount,
-      quantity: 2
+      quantity: 2,
+      page_url: 'https://merchant.example.com/carabiner-354193.html',
+      image_url: 'https://merchant.example.com/carabiner-7378-391453-1.jpg', 
+      categories: [
+        ["Sporting Goods", "Climbing Equipment", "Climbing", "Climbing Carabiners"],
+        ["Sale", "Climbing"]],
+      estimated_shipment_date: '2021-03-01'
     )
     expect(instance.quantity).to eq(2)
   end
@@ -38,6 +50,10 @@ RSpec.describe Afterpay::Item do
       expect(result[:quantity]).to eq(item.quantity)
       expect(result[:price][:amount]).to eq(amount.to_f)
       expect(result[:price][:currency]).to eq(amount.currency)
+      expect(result[:page_url]).to eq(item.page_url)
+      expect(result[:image_url]).to eq(item.image_url)
+      expect(result[:categories]).to eq(item.categories)
+      expect(result[:estimated_shipment_date]).to eq(item.estimated_shipment_date)
     end
   end
 end
