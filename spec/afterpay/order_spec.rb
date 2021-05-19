@@ -31,7 +31,13 @@ RSpec.describe Afterpay::Order do
       items: [Afterpay::Item.new(
         name: "Item Name",
         sku: 1,
-        price: Money.from_amount(1000, "AUD")
+        price: Money.from_amount(1000, "AUD"),
+        page_url: 'https://merchant.example.com/carabiner-354193.html',
+        image_url: 'https://merchant.example.com/carabiner-7378-391453-1.jpg',
+        categories: [
+          ["Sporting Goods", "Climbing Equipment", "Climbing", "Climbing Carabiners"],
+          ["Sale", "Climbing"]],
+        estimated_shipment_date: '2021-03-01'
       )],
       success_url: "http://example.com/success",
       cancel_url: "http://example.com/cancel"
@@ -67,7 +73,13 @@ RSpec.describe Afterpay::Order do
           items: [Afterpay::Item.new(
             name: "Item Name",
             sku: 1,
-            price: Money.from_amount(1000, "AUD")
+            price: Money.from_amount(1000, "AUD"),
+            page_url: 'https://merchant.example.com/carabiner-354193.html',
+            image_url: 'https://merchant.example.com/carabiner-7378-391453-1.jpg',
+            categories: [
+              ["Sporting Goods", "Climbing Equipment", "Climbing", "Climbing Carabiners"],
+              ["Sale", "Climbing"]],
+            estimated_shipment_date: '2021-03-01'
           )],
           success_url: "http://example.com/success",
           cancel_url: "http://example.com/cancel",
