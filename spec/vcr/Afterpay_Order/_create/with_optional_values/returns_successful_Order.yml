@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api-sandbox.afterpay.com/v1/orders
+    uri: https://api-sandbox.afterpay.com/v2/checkouts
     body:
       encoding: UTF-8
-      string: '{"totalAmount":{"amount":1000.0,"currency":"AUD"},"consumer":{"phoneNumber":12345678910,"givenNames":"FName","surname":"LName","email":"johndoe@mail.com"},"items":[{"name":"Item
+      string: '{"amount":{"amount":1000.0,"currency":"AUD"},"consumer":{"phoneNumber":12345678910,"givenNames":"FName","surname":"LName","email":"johndoe@mail.com"},"items":[{"name":"Item
         Name","sku":1,"quantity":1,"price":{"amount":1000.0,"currency":"AUD"}}],"merchant":{"redirectConfirmUrl":"http://example.com/success","redirectCancelUrl":"http://example.com/cancel"},"merchantReference":null,"taxAmount":null,"paymentType":null,"shippingAmount":{"amount":50.0,"currency":"AUD"},"billing":{"name":"John
         Doe","line1":"An address","line2":"","suburb":"Melbourne","state":"QLD","postcode":"3000","countryCode":"AU","phoneNumber":"67108864"},"shipping":{"name":"John
         Doe","line1":"An address","line2":"","suburb":"Melbourne","state":"QLD","postcode":"3000","countryCode":"AU","phoneNumber":"67108864"}}'

@@ -112,8 +112,8 @@ RSpec.describe Afterpay::Order do
     it "transform Order to Afterpay hash" do
       hash = order.to_hash
 
-      expect(hash[:totalAmount][:amount]).to eq(1000.0)
-      expect(hash[:totalAmount][:currency]).to eq("AUD")
+      expect(hash[:amount][:amount]).to eq(1000.0)
+      expect(hash[:amount][:currency]).to eq("AUD")
       expect(hash[:consumer]).to be_a Hash
       expect(hash[:items]).not_to be_empty
       expect(hash[:merchant][:redirectConfirmUrl]).to match(/success/)

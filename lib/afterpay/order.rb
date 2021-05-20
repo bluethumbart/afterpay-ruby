@@ -68,7 +68,7 @@ module Afterpay
     # Builds structure to API specs
     def to_hash
       data = {
-        totalAmount: Utils::Money.api_hash(total),
+        amount: Utils::Money.api_hash(total),
         consumer: consumer.to_hash,
         items: items.map(&:to_hash),
         merchant: {
@@ -91,7 +91,7 @@ module Afterpay
     # Sends the create request to Afterpay server
     # @return [Response]
     def create
-      request = Afterpay.client.post("/v1/orders") do |req|
+      request = Afterpay.client.post("/v2/checkouts") do |req|
         req.body = to_hash
       end
       response = request.body
