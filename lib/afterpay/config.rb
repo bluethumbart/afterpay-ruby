@@ -15,7 +15,7 @@ module Afterpay
 
     # Called only after app_id and secred is set
     def fetch_remote_config
-      response = Afterpay.client.get("/v1/configuration").body[0]
+      response = Afterpay.client.get("/v2/configuration").body[0]
 
       @type = response[:type]
       @minimum_amount = response.dig(:minimumAmount, :amount).to_f

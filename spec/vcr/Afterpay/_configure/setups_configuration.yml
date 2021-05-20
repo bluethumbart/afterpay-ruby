@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api-sandbox.afterpay.com/v1/configuration
+    uri: https://api-sandbox.afterpay.com/v2/configuration
     body:
       encoding: US-ASCII
       string: ''
@@ -45,8 +45,6 @@ http_interactions:
       encoding: ASCII-8BIT
       string: |-
         [ {
-          "type" : "PAY_BY_INSTALLMENT",
-          "description" : "Pay over time",
           "maximumAmount" : {
             "amount" : "1000.00",
             "currency" : "AUD"
