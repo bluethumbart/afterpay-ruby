@@ -9,7 +9,7 @@ module Afterpay
     # @param reference [String] the reference for payment
     # @return [Payment] the Payment object
     def self.execute(token:, reference:)
-      request = Afterpay.client.post("/v1/payments/capture") do |req|
+      request = Afterpay.client.post("/v2/payments/capture") do |req|
         req.body = {
           token: token,
           merchantRefernce: reference
@@ -19,14 +19,17 @@ module Afterpay
       new(request.body)
     end
 
-    attr_accessor :id, :status, :created, :total, :order, :error
+    attr_accessor :id, :token, :status, :created, :original_amount, :open_to_capture_amount,
+                  :payment_state, :merchant_reference, :order, :error
 
     # Initialize Payment from response
     def initialize(attributes)
       @id = attributes[:id]
       @status = attributes[:status]
       @created = attributes[:created]
-      @total = Utils::Money.from_response(attributes[:total])
+      @original_amount = Utils::Money.from_response(attributes[:originalAmount])
+      @open_to_capture_amount = Utils::Money.from_response(attributes[:openToCaptureAmount])
+      @payment_state = attributes[:paymentState]
       @order = Order.from_response(attributes[:orderDetails])
       @error = Error.new(attributes) if attributes[:errorId]
     end

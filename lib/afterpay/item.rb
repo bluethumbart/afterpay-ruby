@@ -1,42 +1,13 @@
 # frozen_string_literal: true
 
-
-# {
-#   "name": "T-Shirt",
-#   "sku": "12341234",
-#   "quantity": 1,
-#   "price": {
-#     "amount": "10.00",
-#     "currency": "AUD"
-#   }
-# }
-
-# {
-#   "name": "Blue Carabiner",
-#   "sku": "12341234",
-#   "quantity": 1,
-#   "pageUrl": "https://merchant.example.com/carabiner-354193.html",
-#   "imageUrl": "https://merchant.example.com/carabiner-7378-391453-1.jpg",
-#   "price": {
-#     "amount": "40.00",
-#     "currency": "AUD"
-#   },
-#   "categories": [
-#     ["Sporting Goods", "Climbing Equipment", "Climbing", "Climbing Carabiners"],
-#     ["Sale", "Climbing"]
-#   ],
-#   "estimatedShipmentDate": "2021-03-01"
-# }
-
-
-
 require "money"
 
 module Afterpay
   class Item
     attr_accessor :name, :sku, :quantity, :page_url, :image_url, :price, :categories, :estimated_shipment_date
 
-    def initialize(name:, price:, sku: nil, quantity: 1, page_url:, image_url:, categories:, estimated_shipment_date:)
+    # rubocop:disable Metrics/ParameterLists
+    def initialize(name:, price:, page_url:, image_url:, categories:, estimated_shipment_date:, sku: nil, quantity: 1)
       @name = name
       @sku = sku
       @quantity = quantity
@@ -46,6 +17,7 @@ module Afterpay
       @categories = categories
       @estimated_shipment_date = estimated_shipment_date
     end
+    # rubocop:enable Metrics/ParameterLists
 
     def to_hash
       {

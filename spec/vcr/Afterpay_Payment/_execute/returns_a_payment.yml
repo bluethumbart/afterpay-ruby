@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api-sandbox.afterpay.com/v1/payments/capture
+    uri: https://api-sandbox.afterpay.com/v2/payments/capture
     body:
       encoding: UTF-8
       string: '{"token":"q3f6gn81q09gfjk7riaqfhavmtebt88qpjepd9kmjo37ou7oj5eb","merchantRefernce":"checkout-1"}'
@@ -47,10 +47,15 @@ http_interactions:
           "token" : "q3f6gn81q09gfjk7riaqfhavmtebt88qpjepd9kmjo37ou7oj5eb",
           "status" : "APPROVED",
           "created" : "2019-04-09T08:38:30.159Z",
-          "totalAmount" : {
-            "amount" : "1000.00",
-            "currency" : "AUD"
-          },
+          "originalAmount" : {
+              "amount" : "100.00",
+              "currency" : "AUD"
+            },
+            "openToCaptureAmount" : {
+              "amount" : "100.00",
+              "currency" : "AUD"
+            },
+          "paymentState" : "AUTH_APPROVED",
           "refunds" : [ ],
           "orderDetails" : {
             "consumer" : {

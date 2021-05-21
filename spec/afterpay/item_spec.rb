@@ -7,12 +7,13 @@ RSpec.describe Afterpay::Item do
       name: "Item Name",
       sku: 1,
       price: amount,
-      page_url: 'https://merchant.example.com/carabiner-354193.html',
-      image_url: 'https://merchant.example.com/carabiner-7378-391453-1.jpg',
+      page_url: "https://merchant.example.com/carabiner-354193.html",
+      image_url: "https://merchant.example.com/carabiner-7378-391453-1.jpg",
       categories: [
         ["Sporting Goods", "Climbing Equipment", "Climbing", "Climbing Carabiners"],
-        ["Sale", "Climbing"]],
-      estimated_shipment_date: '2021-03-01'
+        %w[Sale Climbing]
+      ],
+      estimated_shipment_date: "2021-03-01"
     )
   end
 
@@ -31,12 +32,13 @@ RSpec.describe Afterpay::Item do
       sku: 1,
       price: amount,
       quantity: 2,
-      page_url: 'https://merchant.example.com/carabiner-354193.html',
-      image_url: 'https://merchant.example.com/carabiner-7378-391453-1.jpg', 
+      page_url: "https://merchant.example.com/carabiner-354193.html",
+      image_url: "https://merchant.example.com/carabiner-7378-391453-1.jpg",
       categories: [
         ["Sporting Goods", "Climbing Equipment", "Climbing", "Climbing Carabiners"],
-        ["Sale", "Climbing"]],
-      estimated_shipment_date: '2021-03-01'
+        %w[Sale Climbing]
+      ],
+      estimated_shipment_date: "2021-03-01"
     )
     expect(instance.quantity).to eq(2)
   end

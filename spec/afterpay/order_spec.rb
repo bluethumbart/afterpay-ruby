@@ -12,7 +12,7 @@ RSpec.describe Afterpay::Order do
     Afterpay::Address.new(
       name: "John Doe",
       line_1: "An address",
-      area_1: 'Melbourne',
+      area_1: "Melbourne",
       region: "VIC",
       postcode: 3000,
       phone: 1402312000
@@ -32,12 +32,13 @@ RSpec.describe Afterpay::Order do
         name: "Item Name",
         sku: 1,
         price: Money.from_amount(1000, "AUD"),
-        page_url: 'https://merchant.example.com/carabiner-354193.html',
-        image_url: 'https://merchant.example.com/carabiner-7378-391453-1.jpg',
+        page_url: "https://merchant.example.com/carabiner-354193.html",
+        image_url: "https://merchant.example.com/carabiner-7378-391453-1.jpg",
         categories: [
           ["Sporting Goods", "Climbing Equipment", "Climbing", "Climbing Carabiners"],
-          ["Sale", "Climbing"]],
-        estimated_shipment_date: '2021-03-01'
+          %w[Sale Climbing]
+        ],
+        estimated_shipment_date: "2021-03-01"
       )],
       success_url: "http://example.com/success",
       cancel_url: "http://example.com/cancel"
@@ -74,12 +75,13 @@ RSpec.describe Afterpay::Order do
             name: "Item Name",
             sku: 1,
             price: Money.from_amount(1000, "AUD"),
-            page_url: 'https://merchant.example.com/carabiner-354193.html',
-            image_url: 'https://merchant.example.com/carabiner-7378-391453-1.jpg',
+            page_url: "https://merchant.example.com/carabiner-354193.html",
+            image_url: "https://merchant.example.com/carabiner-7378-391453-1.jpg",
             categories: [
               ["Sporting Goods", "Climbing Equipment", "Climbing", "Climbing Carabiners"],
-              ["Sale", "Climbing"]],
-            estimated_shipment_date: '2021-03-01'
+              %w[Sale Climbing]
+            ],
+            estimated_shipment_date: "2021-03-01"
           )],
           success_url: "http://example.com/success",
           cancel_url: "http://example.com/cancel",
