@@ -20,7 +20,7 @@ module Afterpay
     end
 
     attr_accessor :id, :token, :status, :created, :original_amount, :open_to_capture_amount,
-                  :payment_state, :merchant_reference, :order, :error
+                  :payment_state, :merchant_reference, :refunds, :order, :events, :error
 
     # Initialize Payment from response
     def initialize(attributes)
@@ -30,7 +30,9 @@ module Afterpay
       @original_amount = Utils::Money.from_response(attributes[:originalAmount])
       @open_to_capture_amount = Utils::Money.from_response(attributes[:openToCaptureAmount])
       @payment_state = attributes[:paymentState]
+      @refunds = attributes[:refunds]
       @order = Order.from_response(attributes[:orderDetails])
+      @events = attributes[:events]
       @error = Error.new(attributes) if attributes[:errorId]
     end
 
