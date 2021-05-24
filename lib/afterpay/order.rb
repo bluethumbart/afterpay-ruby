@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Afterpay
-  # The Order object for creating an order to `/v1/orders`
+  # The Order object for creating an order to `/v2/checkouts`
   class Order
     attr_accessor :total, :consumer, :items, :shipping, :tax, :discounts,
                   :billing, :shipping_address, :billing_address, :reference,
@@ -13,7 +13,7 @@ module Afterpay
     # @param token [String]
     # @return [Order]
     def self.find(token)
-      request = Afterpay.client.get("/v1/orders/#{token}")
+      request = Afterpay.client.get("/v2/checkouts/#{token}")
 
       Order.from_response(request.body)
     end
