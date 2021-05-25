@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api-sandbox.afterpay.com/v2/configuration
+    uri: https://api.us-sandbox.afterpay.com/v2/configuration
     body:
       encoding: US-ASCII
       string: ''

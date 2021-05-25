@@ -15,7 +15,7 @@ module Afterpay
 
     # Called only after app_id and secred is set
     def fetch_remote_config
-      response_body = Afterpay.client.get("/v2/configuration").body
+      response_body = Afterpay.client.get("/v2/configuration").body.first
       @minimum_amount = response_body.dig(:minimumAmount, :amount).to_f
       @maximum_amount = response_body.dig(:maximumAmount, :amount).to_f
     end

@@ -4,6 +4,7 @@ require "faraday"
 require "faraday_middleware"
 require "base64"
 require "forwardable"
+require 'pry'
 
 module Afterpay
   # Client object acting as the connection
@@ -12,7 +13,7 @@ module Afterpay
     extend Forwardable
 
     BASE_URL = "https://api.afterpay.com/"
-    SANDBOX_BASE_URL = "https://api-sandbox.afterpay.com/"
+    SANDBOX_BASE_URL = "https://api.us-sandbox.afterpay.com/v2/"
 
     class NotFoundError < StandardError; end
 
@@ -29,7 +30,6 @@ module Afterpay
     # `<app_id>:<secret>`
     def self.auth_token
       auth_str = "#{Afterpay.config.app_id}:#{Afterpay.config.secret}"
-
       Base64.strict_encode64(auth_str)
     end
 

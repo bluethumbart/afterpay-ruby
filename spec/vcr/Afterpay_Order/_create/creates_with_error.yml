@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api-sandbox.afterpay.com/v2/checkouts
+    uri: https://api.us-sandbox.afterpay.com/v2/checkouts
     body:
       encoding: UTF-8
       string: '{"amount":{"amount":1000.0,"currency":"AUD"},"consumer":{"phoneNumber":12345678910,"givenNames":"FName","surname":"LName","email":"johndoe@mail.com"},"items":[{"name":"Item

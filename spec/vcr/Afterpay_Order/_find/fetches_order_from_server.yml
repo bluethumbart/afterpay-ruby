@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api-sandbox.afterpay.com/v1/orders/le4bavv8rl6m0m3d2rq7k5dvpvmoeetrhro64m0ihoj7ou8idmtv
+    uri: https://api.us-sandbox.afterpay.com/v2/checkouts/le4bavv8rl6m0m3d2rq7k5dvpvmoeetrhro64m0ihoj7ou8idmtv
     body:
       encoding: US-ASCII
       string: ''
