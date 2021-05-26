@@ -4,7 +4,6 @@ require "faraday"
 require "faraday_middleware"
 require "base64"
 require "forwardable"
-require 'pry'
 
 module Afterpay
   # Client object acting as the connection
