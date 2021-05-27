@@ -25,8 +25,8 @@ module Afterpay
         sku: sku,
         quantity: quantity,
         price: {
-          amount: price.to_f,
-          currency: price.currency
+          amount: price.amount.to_f,
+          currency: price.currency.iso_code
         },
         page_url: page_url,
         image_url: image_url,
