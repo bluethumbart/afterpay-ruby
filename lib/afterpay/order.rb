@@ -72,7 +72,6 @@ module Afterpay
       data = {
         amount: Utils::Money.api_hash(total),
         consumer: consumer.to_hash,
-        items: items.map(&:to_hash),
         merchant: {
           redirectConfirmUrl: success_url,
           redirectCancelUrl: cancel_url
@@ -101,7 +100,7 @@ module Afterpay
       response = request.body
 
       if request.success?
-        @expiry = Time.parse(response[:expires])
+        @expiry = response[:expires]
         @token = response[:token]
       else
         @error = Error.new(response)
