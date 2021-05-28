@@ -13,6 +13,11 @@ require_relative "afterpay/payment"
 require_relative "afterpay/error"
 require_relative "afterpay/discount"
 require_relative "afterpay/address"
+require_relative "afterpay/auth"
+require_relative "afterpay/refund"
+require_relative "afterpay/shipping_courier"
+require_relative "afterpay/payment_event"
+
 
 module Afterpay
   class << self
