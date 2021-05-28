@@ -12,19 +12,7 @@ module Afterpay
           merchantReference: merchant_reference
         }
       end
-
-      new(request.body)
-    end
-
-    def initialize(attributes)
-      @request_id = attributes[:request_id]
-      @token = attributes[:token]
-      @merchant_reference = attributes[:merchant_reference]
-      @error = Error.new(attributes) if attributes[:errorId]
-    end
-
-    def success?
-      @status == "APPROVED"
+      request.body
     end
   end
 end
