@@ -48,7 +48,7 @@ module Afterpay
         req.body = {
           requestId: request_id,
           merchantRefernce: reference,
-          amount: { amount: amount.amount.to_f, currency: amount.currency.iso_code },
+          amount: Utils::Money.api_hash(amount),
           paymentEventMerchantReference: payment_event_merchant_reference
         }
       end
@@ -71,7 +71,7 @@ module Afterpay
       request = Afterpay.client.post("/v2/payments/#{order_id}/void") do |req|
         req.body = {
           requestId: request_id,
-          amount: { amount: amount.amount.to_f, currency: amount.currency.iso_code }
+          amount: Utils::Money.api_hash(amount)
         }
       end
       new(request.body)

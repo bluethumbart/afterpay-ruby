@@ -19,7 +19,7 @@ module Afterpay
       request = Afterpay.client.post("/v2/payments/#{order_id}/refund") do |req|
         req.body = {
           requestId: request_id,
-          amount: { amount: amount.amount.to_f, currency: amount.currency.iso_code },
+          amount: Utils::Money.api_hash(amount),
           merchantReference: merchant_reference,
           refundMerchantReference: refund_merchant_reference
         }
