@@ -19,6 +19,21 @@ module Afterpay
       new(request.body)
     end
 
+    def self.execute_deffered_payment(request_id:, reference:, amount:, payment_event_merchant_reference:, order_id:)
+      request = Afterpay.client.post("/v2/payments/#{order_id}/capture") do |req|
+        req.body = {
+          requestId: request_id,
+          merchantRefernce: reference,
+          amount: { amount: amount.amount.to_f, currency: amount.currency.iso_code },
+          paymentEventMerchantReference: payment_event_merchant_reference
+        }
+      end
+
+      # new(request.body)
+      request.body
+      binding.pry
+    end
+
     attr_accessor :id, :token, :status, :created, :original_amount, :open_to_capture_amount,
                   :payment_state, :merchant_reference, :refunds, :order, :events, :error
 

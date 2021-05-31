@@ -4,6 +4,7 @@ require "faraday"
 require "faraday_middleware"
 require "base64"
 require "forwardable"
+require 'pry'
 
 module Afterpay
   # Client object acting as the connection
@@ -43,7 +44,7 @@ module Afterpay
         Faraday.new(url: self.class.server_url) do |conn|
           conn.use ErrorMiddleware if Afterpay.config.raise_errors
           conn.authorization "Basic", self.class.auth_token
-          conn.headers["User-Agent"] = Afterpay.config.user_agent_header if Afterpay.config.user_agent_header.present?
+          # conn.headers["User-Agent"] = Afterpay.config.user_agent_header if Afterpay.config.user_agent_header.present?
 
           conn.request :json
           conn.response :json, content_type: "application/json", parser_options: { symbolize_names: true }
@@ -62,10 +63,13 @@ module Afterpay
       @app.call(env).on_complete do
         case env[:status]
         when 404
-          raise Client::NotFoundError, env.dig(:body, "message")
+          binding.pry
+          raise Client::NotFoundError, JSON.parse(env.body).dig('message')
         when 401
-          raise Client::UnauthorizedError, env.dig(:body, "message")
+          binding.pry
+          raise Client::UnauthorizedError, JSON.parse(env.body).dig('message')
         end
+
       end
     end
   end

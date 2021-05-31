@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'pry'
 
 module Afterpay
   # The Order object for creating an order to `/v2/checkouts`
@@ -98,7 +99,6 @@ module Afterpay
         req.body = to_hash
       end
       response = request.body
-
       if request.success?
         @expiry = response[:expires]
         @token = response[:token]
