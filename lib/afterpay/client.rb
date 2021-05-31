@@ -63,10 +63,8 @@ module Afterpay
       @app.call(env).on_complete do
         case env[:status]
         when 404
-          binding.pry
           raise Client::NotFoundError, JSON.parse(env.body).dig('message')
         when 401
-          binding.pry
           raise Client::UnauthorizedError, JSON.parse(env.body).dig('message')
         end
 
