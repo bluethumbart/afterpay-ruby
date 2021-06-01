@@ -8,7 +8,7 @@ http_interactions:
       string: '{"requestId":"fjfwwwjfj0902929210","token":"002.avpv776th25fof4itbfvrc019dqje4ia27qjk5525o3mfosr","merchantReference":"100101468"}'
     headers:
       Authorization:
-      - Basic MTAwMTAxMzgyOjFjYWQwZDEyNTQ2YTY2NTZkMDUwMzcyN2ZlMjA2ODVjZTc0YTIzYmI5MTM1NzRlMjQ0YjQwMWExN2YzZjY2N2ViYzViZDkwYjI2ZWE5YzRmMThmOTJjNzk4MjQ2MjAyN2E5NGViMzFjNzBkNjBhMzg2N2ZiZGQxNWM3MzAxODY5
+      - Basic <AUTH TOKEN>
       User-Agent:
       - Faraday v0.17.3
       Content-Type:
