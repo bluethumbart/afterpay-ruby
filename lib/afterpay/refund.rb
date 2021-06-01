@@ -3,7 +3,7 @@
 module Afterpay
   class Refund
     attr_accessor :request_id, :amount, :merchant_reference, :refund_id, :refunded_at,
-                   :refund_merchant_reference
+                  :refund_merchant_reference
 
     def initialize(attributes)
       @request_id = attributes[:requestId]
@@ -15,7 +15,7 @@ module Afterpay
     end
 
     def self.execute(request_id:, order_id:, amount:, merchant_reference:,
-                             refund_merchant_reference:)
+                     refund_merchant_reference:)
       request = Afterpay.client.post("/v2/payments/#{order_id}/refund") do |req|
         req.body = {
           requestId: request_id,

@@ -3,7 +3,6 @@
 module Afterpay
   # They Payment object
   class Payment
-
     attr_accessor :id, :token, :status, :created, :original_amount, :open_to_capture_amount,
                   :payment_state, :merchant_reference, :refunds, :order, :events, :error
 
@@ -55,7 +54,7 @@ module Afterpay
     end
 
     def self.execute_deffered_payment(request_id:, reference:, amount:,
-          payment_event_merchant_reference:, order_id:)
+                                      payment_event_merchant_reference:, order_id:)
       request = Afterpay.client.post("/v2/payments/#{order_id}/capture") do |req|
         req.body = {
           requestId: request_id,

@@ -4,7 +4,7 @@ require "faraday"
 require "faraday_middleware"
 require "base64"
 require "forwardable"
-require 'pry'
+require "pry"
 
 module Afterpay
   # Client object acting as the connection
@@ -63,11 +63,10 @@ module Afterpay
       @app.call(env).on_complete do
         case env[:status]
         when 404
-          raise Client::NotFoundError, env.body.dig(:message)
+          raise Client::NotFoundError, env.body[:message]
         when 401
-          raise Client::UnauthorizedError, env.body.dig(:message)
+          raise Client::UnauthorizedError, env.body[:message]
         end
-
       end
     end
   end

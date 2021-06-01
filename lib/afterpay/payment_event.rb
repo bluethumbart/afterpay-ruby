@@ -2,7 +2,7 @@
 
 module Afterpay
   class PaymentEvent
-    attr_accessor :id, :created, :expires, :type, :amount, :paymentEventMerchantReference
+    attr_accessor :id, :created, :expires, :type, :amount, :payment_event_merchant_reference
 
     def initialize(attributes)
       @id = attributes[:id]
