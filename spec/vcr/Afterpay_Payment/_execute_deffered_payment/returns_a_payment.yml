@@ -1,0 +1,129 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.us-sandbox.afterpay.com/v2/payments/100101529842/capture
+    body:
+      encoding: UTF-8
+      string: '{"requestId":"wert100101529590","merchantRefernce":"100101468","amount":{"amount":250.0,"currency":"USD"},"paymentEventMerchantReference":""}'
+    headers:
+      Authorization:
+      - Basic MTAwMTAxMzgyOjFjYWQwZDEyNTQ2YTY2NTZkMDUwMzcyN2ZlMjA2ODVjZTc0YTIzYmI5MTM1NzRlMjQ0YjQwMWExN2YzZjY2N2ViYzViZDkwYjI2ZWE5YzRmMThmOTJjNzk4MjQ2MjAyN2E5NGViMzFjNzBkNjBhMzg2N2ZiZGQxNWM3MzAxODY5
+      User-Agent:
+      - Faraday v0.17.3
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      date:
+      - Tue, 01 Jun 2021 10:58:41 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '1815'
+      connection:
+      - close
+      http_correlation_id:
+      - 5qpfpmgpfbyizyire5ojdk7vga
+      x-envoy-upstream-service-time:
+      - '33'
+      cf-cache-status:
+      - DYNAMIC
+      cf-request-id:
+      - 0a68d2d889000031a02e1b5000000001
+      expect-ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      set-cookie:
+      - __cf_bm=1924d7c4a6fe206d7e096da8704f0f31ec93b75f-1622545121-1800-Aet9XtENksIEyDVh3X6RWZ4+8CH82SK25KcOVF8bqVyY5vlU00IlikezGr7kVtJKlPY4x0ZEX5j4NILEbB03QsVPIvmsVoDHUiVjJGGrdLDH;
+        path=/; expires=Tue, 01-Jun-21 11:28:41 GMT; domain=.afterpay.com; HttpOnly;
+        Secure; SameSite=None
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      server:
+      - cloudflare
+      cf-ray:
+      - 6587eda0db1731a0-BOM
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id" : "100101529842",
+          "token" : "002.avpv776th25fof4itbfvrc019dqje4ia27qjk5525o3mfosr",
+          "status" : "APPROVED",
+          "created" : "2021-06-01T10:49:10.774Z",
+          "originalAmount" : {
+            "amount" : "1000.00",
+            "currency" : "USD"
+          },
+          "openToCaptureAmount" : {
+            "amount" : "750.00",
+            "currency" : "USD"
+          },
+          "paymentState" : "PARTIALLY_CAPTURED",
+          "merchantReference" : "100101468",
+          "refunds" : [ ],
+          "orderDetails" : {
+            "consumer" : {
+              "phoneNumber" : "",
+              "givenNames" : "",
+              "surname" : "",
+              "email" : "sachin@yourmechanic.com"
+            },
+            "billing" : {
+              "name" : "ADDESS1",
+              "line1" : "SOME",
+              "line2" : "value",
+              "region" : "U.S. state.",
+              "postcode" : "000000",
+              "countryCode" : "US",
+              "phoneNumber" : "5555555"
+            },
+            "shipping" : {
+              "name" : "ADDESS1",
+              "line1" : "SOME",
+              "line2" : "value",
+              "region" : "U.S. state.",
+              "postcode" : "000000",
+              "countryCode" : "US",
+              "phoneNumber" : "5555555"
+            },
+            "courier" : { },
+            "items" : [ ],
+            "discounts" : [ ],
+            "shippingAmount" : {
+              "amount" : "1000.00",
+              "currency" : "USD"
+            },
+            "taxAmount" : {
+              "amount" : "1000.00",
+              "currency" : "USD"
+            }
+          },
+          "events" : [ {
+            "id" : "1tLOnWb3zejkNWCtkfNBoCXiCus",
+            "created" : "2021-06-01T10:57:49.981Z",
+            "expires" : "2021-06-08T10:57:49.980Z",
+            "type" : "AUTH_APPROVED",
+            "amount" : {
+              "amount" : "1000.00",
+              "currency" : "USD"
+            },
+            "paymentEventMerchantReference" : null
+          }, {
+            "id" : "1tLOu14Ajgoyoh8lBLhoEuYDgAr",
+            "created" : "2021-06-01T10:58:41.543Z",
+            "expires" : null,
+            "type" : "CAPTURED",
+            "amount" : {
+              "amount" : "250.00",
+              "currency" : "USD"
+            },
+            "paymentEventMerchantReference" : ""
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 01 Jun 2021 10:58:41 GMT
+recorded_with: VCR 4.0.0

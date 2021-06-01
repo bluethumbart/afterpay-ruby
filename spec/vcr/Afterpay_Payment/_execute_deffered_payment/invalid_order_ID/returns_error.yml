@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.us-sandbox.afterpay.com/v2/payments/100101529843/capture
+    body:
+      encoding: UTF-8
+      string: '{"requestId":"wert100101529590","merchantRefernce":"100101468","amount":{"amount":250.0,"currency":"USD"},"paymentEventMerchantReference":""}'
+    headers:
+      Authorization:
+      - Basic MTAwMTAxMzgyOjFjYWQwZDEyNTQ2YTY2NTZkMDUwMzcyN2ZlMjA2ODVjZTc0YTIzYmI5MTM1NzRlMjQ0YjQwMWExN2YzZjY2N2ViYzViZDkwYjI2ZWE5YzRmMThmOTJjNzk4MjQ2MjAyN2E5NGViMzFjNzBkNjBhMzg2N2ZiZGQxNWM3MzAxODY5
+      User-Agent:
+      - Faraday v0.17.3
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 412
+      message: Precondition Failed
+    headers:
+      date:
+      - Tue, 01 Jun 2021 10:58:42 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '156'
+      connection:
+      - close
+      http_correlation_id:
+      - zaxobuxk6uagtcbm2sv3jcxmxe
+      x-envoy-upstream-service-time:
+      - '12'
+      cf-cache-status:
+      - DYNAMIC
+      cf-request-id:
+      - 0a68d2da5400000e0803270000000001
+      expect-ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      set-cookie:
+      - __cf_bm=08027ddfbad9813c17773c1ff907a3351b28fc0d-1622545122-1800-AVKbDF2nLqmHlCgyJBj2w2pili9RhEbjTtKss5sZf15VlTAmVg2iGkqGCBfx0/O6CoKxd0dfEtMBJBHX+f9NK6xKvkQe05U6RM9Ah6IIbeh2;
+        path=/; expires=Tue, 01-Jun-21 11:28:42 GMT; domain=.afterpay.com; HttpOnly;
+        Secure; SameSite=None
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      server:
+      - cloudflare
+      cf-ray:
+      - 6587eda3bdbe0e08-BOM
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errorCode" : "error",
+          "errorId" : "cda7eac7b29ffb34",
+          "message" : "A valid auth was not performed for this payment id.",
+          "httpStatusCode" : 412
+        }
+    http_version: 
+  recorded_at: Tue, 01 Jun 2021 10:58:42 GMT
+recorded_with: VCR 4.0.0

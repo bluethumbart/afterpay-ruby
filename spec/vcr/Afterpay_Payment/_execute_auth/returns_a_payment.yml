@@ -1,0 +1,119 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.us-sandbox.afterpay.com/v2/payments/auth
+    body:
+      encoding: UTF-8
+      string: '{"requestId":"fjfwwwjfj0902929210","token":"002.avpv776th25fof4itbfvrc019dqje4ia27qjk5525o3mfosr","merchantReference":"100101468"}'
+    headers:
+      Authorization:
+      - Basic MTAwMTAxMzgyOjFjYWQwZDEyNTQ2YTY2NTZkMDUwMzcyN2ZlMjA2ODVjZTc0YTIzYmI5MTM1NzRlMjQ0YjQwMWExN2YzZjY2N2ViYzViZDkwYjI2ZWE5YzRmMThmOTJjNzk4MjQ2MjAyN2E5NGViMzFjNzBkNjBhMzg2N2ZiZGQxNWM3MzAxODY5
+      User-Agent:
+      - Faraday v0.17.3
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      date:
+      - Tue, 01 Jun 2021 10:57:50 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '1554'
+      connection:
+      - close
+      http_correlation_id:
+      - b4h54dfmg7svkcuod3e5xdmev4
+      x-envoy-upstream-service-time:
+      - '266'
+      cf-cache-status:
+      - DYNAMIC
+      cf-request-id:
+      - 0a68d20e60000031ca66045000000001
+      expect-ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      set-cookie:
+      - __cf_bm=6aa35392eb19341b1e0dc49b1cd2eecbccd8ad9c-1622545070-1800-Af/zkvtaCq0i4uECaedpUKMUZA2RPA+bH9S2Ru/2YCl/DhVTqT5BMXC7N51jyAkNq6qq0In42L/OpG5mV0KoV21+wcpdbcXTjGh1THEB+zG1;
+        path=/; expires=Tue, 01-Jun-21 11:27:50 GMT; domain=.afterpay.com; HttpOnly;
+        Secure; SameSite=None
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      server:
+      - cloudflare
+      cf-ray:
+      - 6587ec5d6a3d31ca-BOM
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id" : "100101529842",
+          "token" : "002.avpv776th25fof4itbfvrc019dqje4ia27qjk5525o3mfosr",
+          "status" : "APPROVED",
+          "created" : "2021-06-01T10:49:10.774Z",
+          "originalAmount" : {
+            "amount" : "1000.00",
+            "currency" : "USD"
+          },
+          "openToCaptureAmount" : {
+            "amount" : "1000.00",
+            "currency" : "USD"
+          },
+          "paymentState" : "AUTH_APPROVED",
+          "merchantReference" : "100101468",
+          "refunds" : [ ],
+          "orderDetails" : {
+            "consumer" : {
+              "phoneNumber" : "",
+              "givenNames" : "",
+              "surname" : "",
+              "email" : "sachin@yourmechanic.com"
+            },
+            "billing" : {
+              "name" : "ADDESS1",
+              "line1" : "SOME",
+              "line2" : "value",
+              "region" : "U.S. state.",
+              "postcode" : "000000",
+              "countryCode" : "US",
+              "phoneNumber" : "5555555"
+            },
+            "shipping" : {
+              "name" : "ADDESS1",
+              "line1" : "SOME",
+              "line2" : "value",
+              "region" : "U.S. state.",
+              "postcode" : "000000",
+              "countryCode" : "US",
+              "phoneNumber" : "5555555"
+            },
+            "courier" : { },
+            "items" : [ ],
+            "discounts" : [ ],
+            "shippingAmount" : {
+              "amount" : "1000.00",
+              "currency" : "USD"
+            },
+            "taxAmount" : {
+              "amount" : "1000.00",
+              "currency" : "USD"
+            }
+          },
+          "events" : [ {
+            "id" : "1tLOnWb3zejkNWCtkfNBoCXiCus",
+            "created" : "2021-06-01T10:57:49.981Z",
+            "expires" : "2021-06-08T10:57:49.980Z",
+            "type" : "AUTH_APPROVED",
+            "amount" : {
+              "amount" : "1000.00",
+              "currency" : "USD"
+            },
+            "paymentEventMerchantReference" : null
+          } ]
+        }
+    http_version: 
+  recorded_at: Tue, 01 Jun 2021 10:57:50 GMT
+recorded_with: VCR 4.0.0

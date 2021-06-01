@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.us-sandbox.afterpay.com/v2/payments/auth
+    body:
+      encoding: UTF-8
+      string: '{"requestId":"fjfwwwjfj0902929210","token":"tgiibd59adl9rldhefaqm9jcgnhca8dvv07t9gcq7lboo6btsdfq11","merchantReference":"100101468"}'
+    headers:
+      Authorization:
+      - Basic MTAwMTAxMzgyOjFjYWQwZDEyNTQ2YTY2NTZkMDUwMzcyN2ZlMjA2ODVjZTc0YTIzYmI5MTM1NzRlMjQ0YjQwMWExN2YzZjY2N2ViYzViZDkwYjI2ZWE5YzRmMThmOTJjNzk4MjQ2MjAyN2E5NGViMzFjNzBkNjBhMzg2N2ZiZGQxNWM3MzAxODY5
+      User-Agent:
+      - Faraday v0.17.3
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 402
+      message: Payment Required
+    headers:
+      date:
+      - Tue, 01 Jun 2021 10:57:50 GMT
+      content-type:
+      - application/json
+      content-length:
+      - '163'
+      connection:
+      - close
+      http_correlation_id:
+      - 42fzpcn5gb3wjkj2bly3bu6m6m
+      x-envoy-upstream-service-time:
+      - '93'
+      cf-cache-status:
+      - DYNAMIC
+      cf-request-id:
+      - 0a68d2111c000031a54bbe0000000001
+      expect-ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      set-cookie:
+      - __cf_bm=944e4a536ec18c534c166964dce28dc52b1d5b7c-1622545070-1800-AU8yJf4ojvIxSjU3GPNr8z1nilATKz5L+jUCRCUkA9hIUJ2AVKcaB0NuNuSlotleCCZoemhHbyYTDwuc5Hy0qunFL3XlJ2atVLwmavQq2q6R;
+        path=/; expires=Tue, 01-Jun-21 11:27:50 GMT; domain=.afterpay.com; HttpOnly;
+        Secure; SameSite=None
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      server:
+      - cloudflare
+      cf-ray:
+      - 6587ec61c84531a5-BOM
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errorCode" : "invalid_token",
+          "errorId" : "2e34262234226ab9",
+          "message" : "Cannot complete payment, expired or invalid token.",
+          "httpStatusCode" : 402
+        }
+    http_version: 
+  recorded_at: Tue, 01 Jun 2021 10:57:50 GMT
+recorded_with: VCR 4.0.0

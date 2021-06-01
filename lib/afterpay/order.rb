@@ -6,7 +6,7 @@ module Afterpay
   class Order
     attr_accessor :total, :consumer, :items, :shipping, :tax, :discounts,
                   :billing, :shipping_address, :billing_address, :reference,
-                  :payment_type, :success_url, :cancel_url
+                  :payment_type, :success_url, :cancel_url, :redirect_checkout_url
 
     attr_reader :expiry, :token, :error
 
@@ -102,6 +102,7 @@ module Afterpay
       if request.success?
         @expiry = response[:expires]
         @token = response[:token]
+        @redirect_checkout_url = response[:redirectCheckoutUrl]
       else
         @error = Error.new(response)
       end

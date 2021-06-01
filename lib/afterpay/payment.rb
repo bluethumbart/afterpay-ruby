@@ -43,25 +43,25 @@ module Afterpay
       new(request.body)
     end
 
-    def self.execute_deffered_payment(request_id:, reference:, amount:, payment_event_merchant_reference:, order_id:)
-      request = Afterpay.client.post("/v2/payments/#{order_id}/capture") do |req|
-        req.body = {
-          requestId: request_id,
-          merchantRefernce: reference,
-          amount: Utils::Money.api_hash(amount),
-          paymentEventMerchantReference: payment_event_merchant_reference
-        }
-      end
-
-      new(request.body)
-    end
-
     def self.execute_auth(request_id:, token:, merchant_reference:)
       request = Afterpay.client.post("/v2/payments/auth") do |req|
         req.body = {
           requestId: request_id,
           token: token,
           merchantReference: merchant_reference
+        }
+      end
+      new(request.body)
+    end
+
+    def self.execute_deffered_payment(request_id:, reference:, amount:,
+          payment_event_merchant_reference:, order_id:)
+      request = Afterpay.client.post("/v2/payments/#{order_id}/capture") do |req|
+        req.body = {
+          requestId: request_id,
+          merchantRefernce: reference,
+          amount: Utils::Money.api_hash(amount),
+          paymentEventMerchantReference: payment_event_merchant_reference
         }
       end
       new(request.body)

@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.us-sandbox.afterpay.com/v2/payments/100101529843/void
+    body:
+      encoding: UTF-8
+      string: '{"requestId":"some_uniqe_val","amount":{"amount":250.0,"currency":"USD"}}'
+    headers:
+      Authorization:
+      - Basic MTAwMTAxMzgyOjFjYWQwZDEyNTQ2YTY2NTZkMDUwMzcyN2ZlMjA2ODVjZTc0YTIzYmI5MTM1NzRlMjQ0YjQwMWExN2YzZjY2N2ViYzViZDkwYjI2ZWE5YzRmMThmOTJjNzk4MjQ2MjAyN2E5NGViMzFjNzBkNjBhMzg2N2ZiZGQxNWM3MzAxODY5
+      User-Agent:
+      - Faraday v0.17.3
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      date:
+      - Tue, 01 Jun 2021 10:58:43 GMT
+      content-type:
+      - application/json
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      http_correlation_id:
+      - s66dl7fuwj6mi4de475hnwdrdu
+      x-envoy-upstream-service-time:
+      - '12'
+      cf-cache-status:
+      - DYNAMIC
+      cf-request-id:
+      - 0a68d2ddf600002e52eba01000000001
+      expect-ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      set-cookie:
+      - __cf_bm=b5bd863ea4beab68a26266277d8676de1d345430-1622545123-1800-AT38e1qA2iBgYqRICujmBQ75tw5OoYXIRh9rYMJK9+swLpp4wnnYXTjCgMRQ+6smasQg7/bGMaq03q/tFUyKRkRTLZdmGq6fk7vEXAFWRymB;
+        path=/; expires=Tue, 01-Jun-21 11:28:43 GMT; domain=.afterpay.com; HttpOnly;
+        Secure; SameSite=None
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      server:
+      - cloudflare
+      cf-ray:
+      - 6587eda98c822e52-BOM
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "errorCode" : "not_found",
+          "errorId" : "ccbbc935a9412c56",
+          "message" : "Afterpay payment ID not found.",
+          "httpStatusCode" : 404
+        }
+    http_version: 
+  recorded_at: Tue, 01 Jun 2021 10:58:43 GMT
+recorded_with: VCR 4.0.0
