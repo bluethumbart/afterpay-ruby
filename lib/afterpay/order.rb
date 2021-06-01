@@ -67,11 +67,14 @@ module Afterpay
       @error = nil
     end
 
+    # rubocop:disable Metrics/CyclomaticComplexity
+
     # Builds structure to API specs
     def to_hash
       data = {
         amount: Utils::Money.api_hash(total),
         consumer: consumer.to_hash,
+        items: items.map(&:to_hash),
         merchant: {
           redirectConfirmUrl: success_url,
           redirectCancelUrl: cancel_url
@@ -88,6 +91,8 @@ module Afterpay
       data[:shipping] = shipping_address.to_hash if shipping_address
       data
     end
+
+    # rubocop:enable Metrics/CyclomaticComplexity
 
     # Sends the create request to Afterpay server
     # @return [Response]
