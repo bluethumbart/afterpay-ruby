@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "faraday"
-require "faraday_middleware"
 require "base64"
 require "forwardable"
 
@@ -42,7 +41,7 @@ module Afterpay
       Thread.current[:afterpay_default_connection] ||=
         Faraday.new(url: self.class.server_url) do |conn|
           conn.use ErrorMiddleware if Afterpay.config.raise_errors
-          conn.authorization "Basic", self.class.auth_token
+          conn.headers['Authorization'] = "Basic #{self.class.auth_token}"
           conn.headers['User-Agent'] = Afterpay.config.user_agent_header if Afterpay.config.user_agent_header.present?
 
           conn.request :json
